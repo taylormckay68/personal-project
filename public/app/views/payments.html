@@ -1,0 +1,87 @@
+<form ng-submit='charge(payment)' class='col-xs-4'>
+    <h1>Angular-Stripe w/ Custom Form</h1><br><br>
+    <section class='form-group'>
+        <label>Patient ID#:</label>
+        <input
+        type="text"
+        name="name"
+        ng-model="payment.customer"
+        class='form-control'
+        placeholder='Enter patient ID'
+        required>
+    </section>
+     <section class='form-group'>
+        <label>Patient First Name:</label>
+        <input
+        type="text"
+        name="name"
+        class='form-control'
+        placeholder='Enter first name of patient'
+        required>
+    </section>
+    <section class='form-group'>
+        <label>Patient Last Name:</label>
+        <input
+        type="text"
+        name="name"
+        class='form-control'
+        placeholder='Enter last name of patient'
+        required>
+    </section>
+    <section class='form-group'>
+      <label>Price to charge:</label>
+      <input
+      class='form-control'
+      type="text"
+      name=""
+      ng-model='mockPrice'
+      placeholder="type in '5.95'"
+      required>
+    </section>
+    <section class='form-group'>
+        <label>Name on card:</label>
+        <input
+        type="text"
+        name="name"
+        class='form-control'
+        placeholder='any random name'
+        required>
+    </section>
+    <section class='form-group'>
+        <label>Card number:</label>
+        <input
+        class='form-control'
+        ng-model="payment.card.number"
+        type="text"
+        placeholder="use one of Stripe's test card numbers"
+        required>
+    </section>
+    <section class='form-group'>
+        <label>CVC:</label>
+        <input
+        class='form-control'
+        ng-model="payment.card.cvc"
+        placeholder='random CVC number'
+        type="text"
+        required>
+    </section>
+    <section class='form-group'>
+        <label>Exp. Mo</label>
+        <input
+        class='form-control'
+        ng-model="payment.card.exp_month"
+        type="text"
+        name="name"
+        placeholder="MM">
+    </section>
+    <section class='form-group'>
+        <label>Exp. Yr</label>
+        <input
+        class='form-control'
+        ng-model="payment.card.exp_year"
+        type="text"
+        name="name"
+        placeholder="YY">
+    </section>
+    <button class='btn btn-primary' type='sumbit'>Confirm</button>
+</form>
