@@ -1,0 +1,11 @@
+<div class="admin-container">
+    <a href="/auth/logout"><button class="button-primary">Logout</button></a>
+    <div>
+        <a ui-sref="addPatient">
+            <img src="./app/assets/add-button.svg.png" alt="">
+            <p>Add Patient</p>
+        </a>
+    </div>
+    <div ui-grid="gridOptionsPatients" class="myGrid"></div>
+    <div ui-grid="gridOptionsPayments" class="myGrid"></div>
+</div>

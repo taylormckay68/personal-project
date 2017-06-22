@@ -1,0 +1,43 @@
+$defaultFont: Tahoma,
+Geneva,
+sans-serif;
+$defaultGrey: #696D70;
+
+.home-container {
+    margin-top: 79px;
+}
+
+.home-jumbotron {
+    height: 750px;
+    width: 100vw;
+    background: url("../app/assets/slc-valley.jpg") 50% / cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.business-container {
+    height: 450px;
+    width: 450px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: $defaultFont;
+    .business-southwest {
+        font-size: 60px;
+        color: white;
+        text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
+    }
+    .business-chiropractic {
+        font-size: 45px;
+        color: white;
+        text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
+    }
+    .business-south-jordan {
+        font-size: 20px;
+        color: white;
+        text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
+    }
+}

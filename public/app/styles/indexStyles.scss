@@ -1,0 +1,75 @@
+$defaultFont: Tahoma,
+Geneva,
+sans-serif;
+$defaultGrey: #696D70;
+
+
+a {
+    color: $defaultGrey;
+    text-decoration: none;
+}
+a:link {
+    color: $defaultGrey;
+    text-decoration: none;
+}
+
+a:hover {
+    color: orange;
+    text-decoration: none;
+}
+
+a:visited {
+    color: $defaultGrey;
+    text-decoration: none;
+}
+footer {
+    height: 100px;
+    width: 100vw;
+    padding-bottom: -50px;
+}
+
+nav {
+    height: 95px;
+    width: 100vw;
+    position: fixed;
+    z-index: 2;
+    background: white;
+    .navbar {
+        height: 95px;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none;
+        font-size: 20px;
+        padding: 0 50px;
+        padding: 0px 125px;
+        font-family: $defaultFont;
+        
+        .request-appt {
+            text-align: center;
+            color: $defaultGrey;
+            border-left: 1px solid $defaultGrey;
+            border-right: 1px solid $defaultGrey;
+            padding: 0 10px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            img {
+                height: 25px;
+                fill: red;
+            }
+        }
+        .home-logo {
+            height: 70px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            img {
+                height: 100%;
+            }
+        }
+    }
+}
+

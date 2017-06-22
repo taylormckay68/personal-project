@@ -1,4 +1,4 @@
-angular.module('personal-project', ['ui.router', 'angular-stripe', 'AngularGM'])
+angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'angularModalService'])
 .config(function($stateProvider, $urlRouterProvider, stripeProvider) {
 
     
@@ -11,7 +11,7 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'AngularGM'])
         .state('home', {
             url: '/home',
             templateUrl: './app/views/home.html',
-            controller: 'mapCtrl'
+            controller: 'mainCtrl'
         })
         .state('congrats', {
             url: '/congrats',
@@ -22,11 +22,41 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'AngularGM'])
             templateUrl: './app/views/payments.html',
             controller: 'mainCtrl'
         })
+        .state('appointment', {
+            url: '/appointment',
+            templateUrl: './app/views/appointment.html',
+            controller: 'mainCtrl'
+        })
+        .state('services', {
+            url: '/services',
+            templateUrl: './app/views/services.html',
+            controller: 'mainCtrl'
+        })
         .state('contact', {
             url: '/contactus',
             templateUrl: './app/views/contact.html',
             controller: 'mainCtrl'
         })
+        .state('admin', {
+            url: '/admin',
+            templateUrl: './app/views/admin.html',
+            controller: 'gridCtrl',
+            resolve: {
+                authenticate: function() {}//event.preventDefault. $state.go: ''
+                
+            }
+        })
+        .state('response', {
+            url: '/response',
+            templateUrl: './app/views/appointment-response.html',
+            controller: 'mainCtrl'
+        })
+        .state('addPatient', {
+            url: '/admin/addpatient',
+            templateUrl: './app/views/add-patient.html',
+            controller: 'gridCtrl'
+        })
+        
         
 
 });

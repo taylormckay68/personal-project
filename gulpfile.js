@@ -11,7 +11,7 @@ const basePath = './public/app';
 // `${basePath}/directives/**/*.scss` add when you have directives
 const paths = {
     jsSrc: [`${basePath}/app.js`, `${basePath}/*js`, `${basePath}/**/*.js`],
-    scssSrc: [`${basePath}/styles/*.scss`],
+    scssSrc: [`${basePath}/styles/*.scss`, `${basePath}/styles/*.css`],
     server: './server/server.js'
 };
 

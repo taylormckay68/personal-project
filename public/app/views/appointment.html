@@ -1,0 +1,45 @@
+<div class="appointment-container">
+
+
+    <h1>Request an appointment</h1>
+    <form ng-submit='submitForm(info)'>
+        <section>
+            <label>First Name</label>
+            <input type="text" name="firstname" ng-model="info.first" placeholder="Enter first name" required>
+        </section>
+        <section>
+            <label>Last Name</label>
+            <input type="text" name="lastname" ng-model="info.last" placeholder="Enter last name" required>
+        </section>
+        <section>
+            <label>Phone number</label>
+            <input type="text" name="phone" ng-model="info.phone" placeholder="Enter phone number" required>
+        </section>
+        <section>
+            <label>Email</label>
+            <input type="email" name="email" ng-model="info.email" placeholder="Enter email">
+        </section>
+        <section>
+            <label>Requested Date</label>
+            <input type="date" name="date" ng-model="info.date" placeholder="Enter requested date" required>
+        </section>
+        <section>
+            <label>Requested Time</label>
+            <!--<select>
+            <option value="9:00 AM">9:00 AM</option>
+            <option value="10:00 AM">10:00 AM</option>
+            <option value="11:00 AM">11:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="1:00 PM">1:00 PM</option>
+            <option value="2:00 PM">2:00 PM</option>
+            <option value="3:00 PM">3:00 PM</option>
+            <option value="4:00 PM">4:00 PM</option>
+            <option value="5:00 PM">5:00 PM</option>
+        </select>-->
+            <select ng-options="hour for hour in hours" ng-model="info.time"></select>
+        </section>
+        <!--<a ui-sref="response">-->
+            <button type="submit">Submit</button>
+        <!--</a>-->
+    </form>
+</div>

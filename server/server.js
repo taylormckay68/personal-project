@@ -4,36 +4,129 @@ const config = require('./config');
 const nodemailer = require('nodemailer');
 const stripe = require('stripe')(config.secretKey);
 const session = require('express-session');
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0')
 const massive = require('massive');
 const moment = require('moment');
+const mailController = require('./controllers/mailController');
+const mainController = require('./controllers/controller')
 const app = express();
 
-app.use(express.static(__dirname + './../public'));
+
 app.use(bodyParser.json());
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: config.sessionSecret
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
-// massive({
-//     host: 'localhost',
-//     port: 5432,
-//     database: 'personal_project'
-// }).then(function(db) {
-//     app.set('db', db);
-// });
+app.use(express.static(__dirname + './../public'));
 
-app.post('/api/test', (req, res, next) => {
-    const { first, last, phone, email, date, time } = req.body;
-    const info = {
-        first,
-        last,
-        phone,
-        email,
-        date: moment(req.body.date).format('LL'),
-        time
+massive(config.connectionString).then(function (db) {
+    app.set('db', db);
+    console.log('DB set');
+});
+
+passport.use(new Auth0Strategy({
+        domain: config.auth0.domain,
+        clientID: config.auth0.clientID,
+        clientSecret: config.auth0.clientSecret,
+        callbackURL: '/auth/callback'
+    },
+    function (accessToken, refreshToken, extraParams, profile, done) {
+        // //Find user in database
+        var db = app.get('db');
+        // // console.log(db.functions);
+        // done(null, profile)
+
+        db.getUserByAuthId([profile.id]).then((response) => {
+            user = response[0];
+            if (!user && profile.id === config.auth0.authorized1) {
+                console.log('CREATING USER');
+                db.createUserByAuth([profile.displayName, profile.id]).then((user) => {
+                    return done(null, user)
+                })
+            } else if(user && profile.id === config.auth0.authorized1){
+                console.log('FOUND USER', user);
+                return done(null, user);
+            } else {
+                return done(null, user);
+            }
+        })
+
+
+
+
+        // db.getUserByAuthId([profile.id], function (err, user) {
+        //     user = user[0];
+        //     if (!user) { //if there isn't one, we'll create one!
+        //         console.log('CREATING USER');
+        //         db.createUserByAuth([profile.displayName, profile.id], function (err, user) {
+        //             console.log(user);
+        //             return done(err, user[0]); // GOES TO SERIALIZE USER
+        //         })
+        //     } else { //when we find the user, return it
+        //         console.log('FOUND USER', user);
+        //         return done(err, user);
+        //     }
+        // })
     }
-    // const formattedDate = moment(date).format('LLLL')
-    console.log(info);
+));
+
+//THIS IS INVOKED ONE TIME TO SET THINGS UP
+passport.serializeUser(function (userA, done) {
+    console.log('serializing', userA);
+    var userB = userA;
+    //Things you might do here :
+    //Serialize just the id, get other information to add to session, 
+    done(null, userB); //PUTS 'USER' ON THE SESSION
+});
+
+//USER COMES FROM SESSION - THIS IS INVOKED FOR EVERY ENDPOINT
+passport.deserializeUser(function (userB, done) {
+    var userC = userB;
+    //Things you might do here :
+    // Query the database with the user id, get other information to put on req.user
+    done(null, userC); //PUTS 'USER' ON REQ.USER
+});
+
+app.get('/auth', passport.authenticate('auth0'));
+
+app.get('/auth/callback',
+    passport.authenticate('auth0', {
+        successRedirect: '/#/admin',
+        failureRedirect: '/#/home'
+    }),
+    function (req, res) {
+        res.status(200).send(req.user);
+    })
+
+app.get('/auth/me', function (req, res) {
+    if (!req.user) return res.sendStatus(404);
+    //THIS IS WHATEVER VALUE WE GOT FROM userC variable above.
+    res.status(200).send(req.user);
 })
+
+app.get('/auth/logout', function (req, res) {
+    req.logout();
+    res.redirect('/#/home');
+})
+
+
+app.get('/api/getPatients', mainController.getPatients);
+
+app.get('/api/getPayments', mainController.getPayments);
+
+app.post('/api/addPatient', mainController.addPatient);
+
+app.post('/api/addPayment', mainController.addPayment)
+
+app.post('/api/sendrequest', mailController.sendEmail)
+
+
 app.post('/api/payment', (req, res, next) => {
-    console.log(req.body);
 
     //convert amount to pennies
     const chargeAmt = req.body.amount;
@@ -57,8 +150,6 @@ app.post('/api/payment', (req, res, next) => {
         }
     }
     const convertedAmt = parseInt(pennies.join(''));
-    console.log("Pennies: ");
-    console.log(convertedAmt);
 
     const charge = stripe.charges.create({
         amount: convertedAmt, // amount in cents, again
@@ -66,13 +157,40 @@ app.post('/api/payment', (req, res, next) => {
         source: req.body.payment.token,
         description: 'Test charge from grahms repo'
     }, (err, charge) => {
-        console.log(res);
         res.sendStatus(200);
         // if (err && err.type === 'StripeCardError') {
         //   // The card has been declined
         // }
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.post('/api/test', (req, res, next) => {
+//     const { first, last, phone, email, date, time } = req.body;
+//     emailContent = {
+//         first,
+//         last,
+//         phone,
+//         email,
+//         date: moment(req.body.date).format('LL'),
+//         time
+//     };
+//     console.log(req.body);
+
+// })
 
 app.listen(3000, () => {
     console.log('Listening on port 3000');

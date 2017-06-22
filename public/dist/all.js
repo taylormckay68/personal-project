@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('personal-project', ['ui.router', 'angular-stripe', 'AngularGM']).config(function ($stateProvider, $urlRouterProvider, stripeProvider) {
+angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'angularModalService']).config(function ($stateProvider, $urlRouterProvider, stripeProvider) {
 
     stripeProvider.setPublishableKey('pk_test_3lJ1tey4i8EkKrNeZdIL8REE');
 
@@ -9,7 +9,7 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'AngularGM'])
     $stateProvider.state('home', {
         url: '/home',
         templateUrl: './app/views/home.html',
-        controller: 'mapCtrl'
+        controller: 'mainCtrl'
     }).state('congrats', {
         url: '/congrats',
         templateUrl: './app/views/congrats.html'
@@ -17,32 +17,96 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'AngularGM'])
         url: '/payments',
         templateUrl: './app/views/payments.html',
         controller: 'mainCtrl'
+    }).state('appointment', {
+        url: '/appointment',
+        templateUrl: './app/views/appointment.html',
+        controller: 'mainCtrl'
+    }).state('services', {
+        url: '/services',
+        templateUrl: './app/views/services.html',
+        controller: 'mainCtrl'
     }).state('contact', {
         url: '/contactus',
         templateUrl: './app/views/contact.html',
         controller: 'mainCtrl'
+    }).state('admin', {
+        url: '/admin',
+        templateUrl: './app/views/admin.html',
+        controller: 'gridCtrl',
+        resolve: {
+            authenticate: function authenticate() {} //event.preventDefault. $state.go: ''
+
+        }
+    }).state('response', {
+        url: '/response',
+        templateUrl: './app/views/appointment-response.html',
+        controller: 'mainCtrl'
+    }).state('addPatient', {
+        url: '/admin/addpatient',
+        templateUrl: './app/views/add-patient.html',
+        controller: 'gridCtrl'
     });
 });
 'use strict';
 
-angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, apptService) {
+angular.module('personal-project').controller('gridCtrl', function ($scope, adminService, $state) {
+
+    // function getUser() {
+    //     userService.getUser().then(function (user) {
+    //         if (user) $scope.user = user.username;
+    //         else $scope.user = 'NOT LOGGED IN';
+    //     })
+    // }
+
+    // getUser();
+
+    // $scope.loginLocal = function (username, password) {
+    //     console.log('Logging in with', username, password);
+    //     userService.loginLocal({
+    //             username: username,
+    //             password: password
+    //         })
+    //         .then(function (res) {
+    //             getUser();
+    //         })
+    // }
+
+    // $scope.logout = userService.logout;
+
+
+    $scope.gridOptionsPatients = {
+        enableFiltering: true
+    };
+    $scope.gridOptionsPayments = {
+        enableFiltering: true
+    };
+
+    $scope.receivePatients = function () {
+        adminService.getPatients().then(function (response) {
+            $scope.gridOptionsPatients.data = response.data;
+        });
+    };
+    $scope.receivePatients();
+
+    $scope.receivePayments = function () {
+        adminService.getPayments().then(function (response) {
+            $scope.gridOptionsPayments.data = response.data;
+        });
+    };
+    $scope.receivePayments();
+
+    $scope.submitPatient = function (patient) {
+        adminService.addPatient(patient).then(function (response) {
+            !response ? alert('not working') : $state.go('admin');
+        });
+    };
+});
+'use strict';
+
+angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, apptService, adminService) {
   $scope.test = 'working';
 
   $scope.payment = {};
-
-  // $scope.options = {
-  //   map: {
-  //     center: new google.maps.LatLng(48, -121),
-  //     zoom: 6,
-  //     mapTypeId: google.maps.MapTypeId.TERRAIN
-  //   },
-  //   volcanoes: {
-  //     icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/red-dot.png',
-  //   },
-  //   selected: {
-  //     icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/yellow-dot.png',
-  //   }
-  // };
 
   $scope.info = {};
 
@@ -50,13 +114,12 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
 
   $scope.submitForm = function (info) {
     apptService.checkWorking(info).then(function (response) {
-      console.log(response);
+      !response ? alert('not working') : $state.go('home');
     });
   };
-  $scope.submitForm();
-  console.log('hello');
 
   $scope.charge = function () {
+
     return stripe.card.createToken($scope.payment.card).then(function (response) {
       console.log('token created for card ending in ', response.card.last4);
       var payment = angular.copy($scope.payment);
@@ -69,6 +132,17 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
         data: {
           amount: $scope.mockPrice,
           payment: payment
+        }
+      });
+    }).then(function () {
+      return $http({
+        method: 'POST',
+        url: '/api/addPayment',
+        data: {
+          firstname: $scope.firstname,
+          lastname: $scope.lastname,
+          patientid: $scope.patientid,
+          payment: $scope.mockPrice
         }
       });
     }).then(function (payment) {
@@ -87,24 +161,39 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
 });
 'use strict';
 
-angular.module('personal-project').controller('mapCtrl', function ($scope) {
-    $scope.options = {
-        map: {
-            center: new google.maps.LatLng(40.5631372, -111.9415556),
-            zoom: 14,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-    };
-    $scope.marker = {
-        "id": 0,
-        name: 'Southwest Chiropractic',
-        "location": {
-            lat: 40.5631372,
-            lng: -111.9415556
-        }
-    };
+angular.module('personal-project').service('adminService', function ($http) {
 
-    $scope.blah = "working it";
+    this.getPatients = function () {
+        return $http({
+            url: '/api/getPatients',
+            method: 'GET'
+        });
+    };
+    this.getPayments = function () {
+        return $http({
+            url: '/api/getPayments',
+            method: 'GET'
+        });
+    };
+    this.addPatient = function (patient) {
+        return $http({
+            url: '/api/addPatient',
+            method: 'POST',
+            data: patient
+        });
+    };
+    // this.addPayment = () => {
+    //     return $http({
+    //         url: '/api/addPayment',
+    //         method: 'POST',
+    //         data: {
+    //             firstname: $scope.firstname,
+    //             lastname: $scope.lastname,
+    //             patientid: $scope.patientid,
+    //             payment: $scope.mockPrice
+    //         }
+    //     })
+    // }
 });
 'use strict';
 
@@ -112,9 +201,35 @@ angular.module('personal-project').service('apptService', function ($http) {
 
     this.checkWorking = function (info) {
         return $http({
-            url: '/api/test',
+            url: '/api/sendrequest',
             method: 'POST',
             data: info
         });
     };
+});
+'use strict';
+
+angular.module('app').service('userService', function ($http) {
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
 });

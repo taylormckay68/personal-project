@@ -1,0 +1,38 @@
+<div class="add-patient-container">
+    <h1>Enter new patient information:</h1>
+    <form ng-submit='submitPatient(patient)'>
+        <section>
+            <label>Patient ID:</label>
+            <input type='text' name='patientid' ng-model='patient.patientid' placeholder='Enter patient ID' required>
+        </section>
+        <section>
+            <label>First Name:</label>
+            <input type='text' name='firstname' ng-model='patient.first' placeholder='Enter patient first name' required>
+        </section>
+        <section>
+            <label>Last Name:</label>
+            <input type='text' name='lastname' ng-model='patient.last' placeholder='Enter patient last name' required>
+        </section>
+        <section>
+            <label>Address:</label>
+            <input type='text' name='address' ng-model='patient.address' placeholder='Enter patient address' required>
+        </section>
+        <section>
+            <label>City:</label>
+            <input type='text' name='city' ng-model='patient.city' placeholder='Enter patient city' required>
+        </section>
+        <section>
+            <label>State:</label>
+            <input type='text' name='state' ng-model='patient.state' placeholder='Enter patient state' required>
+        </section>
+        <section>
+            <label>Zip Code:</label>
+            <input type='text' name='zip' ng-model='patient.zip' placeholder='Enter patient zip code' required>
+        </section>
+        <section>
+            <label>Patient Balance:</label>
+            <input type='text' name='balance' ng-model='patient.balance' placeholder='Enter patient balance' required>
+        </section>
+        <button type="submit">Submit</button>
+    </form>
+</div>
