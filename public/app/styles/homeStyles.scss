@@ -2,7 +2,6 @@ $defaultFont: Tahoma,
 Geneva,
 sans-serif;
 $defaultGrey: #696D70;
-
 .home-container {
     margin-top: 79px;
 }
@@ -17,9 +16,9 @@ $defaultGrey: #696D70;
 }
 
 .business-container {
-    height: 450px;
+    height: 300px;
     width: 450px;
-    
+    background-color: rgba(0, 0, 0, .35);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,5 +38,29 @@ $defaultGrey: #696D70;
         font-size: 20px;
         color: white;
         text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
+    }
+    div {
+        display: flex;
+        justify-content: center;
+        margin-top: 45px;
+        ul {
+            display: flex;
+            flex-direction: row;
+            align-content: space-around;
+            flex-wrap: wrap;
+            li {
+                button:nth-child(1) {
+                    width: 175px;
+                    height: 40px;
+                    margin-left: 30px;
+                    background: green;
+                }
+                button:nth-child(2) {
+                    width: 150ps;
+                    height: 40px;
+                    background: gray;
+                }
+            }
+        }
     }
 }

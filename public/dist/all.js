@@ -1,13 +1,13 @@
 'use strict';
 
-angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'angularModalService']).config(function ($stateProvider, $urlRouterProvider, stripeProvider) {
+angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider, stripeProvider) {
 
     stripeProvider.setPublishableKey('pk_test_3lJ1tey4i8EkKrNeZdIL8REE');
 
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('home', {
-        url: '/home',
+        url: '/',
         templateUrl: './app/views/home.html',
         controller: 'mainCtrl'
     }).state('congrats', {
@@ -37,15 +37,85 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'a
             authenticate: function authenticate() {} //event.preventDefault. $state.go: ''
 
         }
-    }).state('response', {
-        url: '/response',
-        templateUrl: './app/views/appointment-response.html',
-        controller: 'mainCtrl'
     }).state('addPatient', {
         url: '/admin/addpatient',
         templateUrl: './app/views/add-patient.html',
         controller: 'gridCtrl'
     });
+});
+'use strict';
+
+angular.module('personal-project').service('adminService', function ($http) {
+
+    this.getPatients = function () {
+        return $http({
+            url: '/api/getPatients',
+            method: 'GET'
+        });
+    };
+    this.getPayments = function () {
+        return $http({
+            url: '/api/getPayments',
+            method: 'GET'
+        });
+    };
+    this.addPatient = function (patient) {
+        return $http({
+            url: '/api/addPatient',
+            method: 'POST',
+            data: patient
+        });
+    };
+    // this.addPayment = () => {
+    //     return $http({
+    //         url: '/api/addPayment',
+    //         method: 'POST',
+    //         data: {
+    //             firstname: $scope.firstname,
+    //             lastname: $scope.lastname,
+    //             patientid: $scope.patientid,
+    //             payment: $scope.mockPrice
+    //         }
+    //     })
+    // }
+});
+'use strict';
+
+angular.module('personal-project').service('apptService', function ($http) {
+
+    this.checkWorking = function (info) {
+        return $http({
+            url: '/api/sendrequest',
+            method: 'POST',
+            data: info
+        });
+    };
+});
+'use strict';
+
+angular.module('personal-project').service('userService', function ($http) {
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
 });
 'use strict';
 
@@ -103,20 +173,18 @@ angular.module('personal-project').controller('gridCtrl', function ($scope, admi
 });
 'use strict';
 
-angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, apptService, adminService) {
-  $scope.test = 'working';
+angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, apptService, adminService, $modal, $log) {
 
   $scope.payment = {};
 
-  $scope.info = {};
+  $scope.hours = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM"];
 
-  $scope.hours = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
+  // $scope.submitForm = function (info) {
+  //   apptService.checkWorking(info).then(response => {
+  //     !response ? alert('not working') : $state.go('home');
+  //   })
+  // }
 
-  $scope.submitForm = function (info) {
-    apptService.checkWorking(info).then(function (response) {
-      !response ? alert('not working') : $state.go('home');
-    });
-  };
 
   $scope.charge = function () {
 
@@ -158,78 +226,59 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
       }
     });
   };
-});
-'use strict';
 
-angular.module('personal-project').service('adminService', function ($http) {
+  $scope.showForm = function () {
+    $scope.message = "Show Form Button Clicked";
+    console.log($scope.message);
 
-    this.getPatients = function () {
-        return $http({
-            url: '/api/getPatients',
-            method: 'GET'
-        });
-    };
-    this.getPayments = function () {
-        return $http({
-            url: '/api/getPayments',
-            method: 'GET'
-        });
-    };
-    this.addPatient = function (patient) {
-        return $http({
-            url: '/api/addPatient',
-            method: 'POST',
-            data: patient
-        });
-    };
-    // this.addPayment = () => {
-    //     return $http({
-    //         url: '/api/addPayment',
-    //         method: 'POST',
-    //         data: {
-    //             firstname: $scope.firstname,
-    //             lastname: $scope.lastname,
-    //             patientid: $scope.patientid,
-    //             payment: $scope.mockPrice
-    //         }
-    //     })
-    // }
-});
-'use strict';
+    var modalInstance = $modal.open({
+      templateUrl: '../app/views/appointment-request.html',
+      controller: ModalInstanceCtrl,
+      scope: $scope,
+      resolve: {
+        userForm: function userForm() {
+          return $scope.userForm;
+        }
+      }
+    });
 
-angular.module('personal-project').service('apptService', function ($http) {
+    modalInstance.result.then(function (selectedItem) {
+      console.log('selected item', selectedItem);
 
-    this.checkWorking = function (info) {
-        return $http({
-            url: '/api/sendrequest',
-            method: 'POST',
-            data: info
-        });
-    };
-});
-'use strict';
-
-angular.module('app').service('userService', function ($http) {
-
-  this.getUser = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/me'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
     });
   };
+  var ModalInstanceCtrl = function ModalInstanceCtrl($modalInstance, userForm) {
+    $scope.form = {};
+    $scope.submitForm = function (info) {
+      if ($scope.form.userForm.$valid) {
+        apptService.checkWorking(info).then(function (response) {
+          $scope.info = {};
+        });
+        console.log('user form is in scope');
+        $modalInstance.close('closed');
+      } else {
+        console.log('userform is not in scope');
+      }
+    };
 
-  this.logout = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/logout'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+  };
+
+  $scope.showSuccess = function ($modalInstance) {
+    $scope.message = "Show Form Button Clicked";
+    console.log($scope.message);
+
+    var modalInstanceTwo = $modal.open({
+      templateUrl: '../app/views/appointment-response.html'
     });
+
+    $scope.close = function ($modalInstance) {
+      $modalInstance.dismiss('cancel');
+    };
   };
 });

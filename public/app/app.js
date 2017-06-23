@@ -1,4 +1,4 @@
-angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'angularModalService'])
+angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'ui.bootstrap'])
 .config(function($stateProvider, $urlRouterProvider, stripeProvider) {
 
     
@@ -9,7 +9,7 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'a
 
     $stateProvider
         .state('home', {
-            url: '/home',
+            url: '/',
             templateUrl: './app/views/home.html',
             controller: 'mainCtrl'
         })
@@ -45,11 +45,6 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'a
                 authenticate: function() {}//event.preventDefault. $state.go: ''
                 
             }
-        })
-        .state('response', {
-            url: '/response',
-            templateUrl: './app/views/appointment-response.html',
-            controller: 'mainCtrl'
         })
         .state('addPatient', {
             url: '/admin/addpatient',

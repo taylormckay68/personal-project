@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="personal-project">
-<head> 
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="./dist/all.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css">
     <title>Southwest Chiropractic</title>
 </head>
+
 <body ng-controller="mainCtrl">
     <nav style="border-bottom: 1px solid grey">
         <ul class="navbar">
-            <li><a ui-sref="home">
-                <div class="home-logo">
-                    <img src="./app/assets/chiropractic-logo.png"></img>
-                    <h1>Southwest </br>Chiropractic</h1>
-                </div>
-            </a></li>
+            <li>
+                <a ui-sref="home">
+                    <div class="home-logo">
+                        <img src="./app/assets/chiropractic-logo.png"></img>
+                        <h1>Southwest </br>Chiropractic</h1>
+                    </div>
+                </a>
+            </li>
             <li><a ui-sref="contact">Contact Us</a></li>
             <li><a ui-sref="services">Services</a></li>
             <li><a ui-sref="payments">Online Payment</a></li>
-            <li class="request-appt"><a ui-sref="appointment">
+
+            <li class="request-appt"><a href="" ng-click="showForm()">
                 <img src="./app/assets/calendar.svg" alt="">
                 <div>Request </br>Appointment</div>
             </a></li>
@@ -29,7 +35,7 @@
     </nav>
     <p>test</p>
 
-  
+
 
     <ui-view></ui-view>
 
@@ -38,17 +44,19 @@
             <li><a href="/auth">Admin</a></li>
         </ul>
     </footer>
-    
-    
+
+
     <script src="https://js.stripe.com/v2/"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
     <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
-    <script src="https://rawgit.com/dwmkerr/angular-modal-service/master/dst/angular-modal-service.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.9.0.js"></script>
     <script src="dist/all.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-stripe/4.2.12/angular-stripe.js"></script>
+    <script src="https://use.fontawesome.com/0948186468.js"></script>
 
-    
-    
+
+
 </body>
+
 </html>

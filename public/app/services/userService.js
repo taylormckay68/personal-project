@@ -1,4 +1,4 @@
-angular.module('app')
+angular.module('personal-project')
 .service('userService', function($http) {
   
 

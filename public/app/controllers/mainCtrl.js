@@ -1,17 +1,16 @@
-angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, apptService, adminService) {
-  $scope.test = 'working';
+angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, apptService, adminService, $modal, $log) {
+
 
   $scope.payment = {};
 
-  $scope.info = {};
+  $scope.hours = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",  "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM"]
 
-  $scope.hours = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"]
+  // $scope.submitForm = function (info) {
+  //   apptService.checkWorking(info).then(response => {
+  //     !response ? alert('not working') : $state.go('home');
+  //   })
+  // }
 
-  $scope.submitForm = function (info) {
-    apptService.checkWorking(info).then(response => {
-      !response ? alert('not working') : $state.go('home');
-    })
-  }
 
 
   $scope.charge = function () {
@@ -59,4 +58,61 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
         }
       });
   };
+
+
+  $scope.showForm = function () {
+    $scope.message = "Show Form Button Clicked";
+    console.log($scope.message);
+
+    var modalInstance = $modal.open({
+      templateUrl: '../app/views/appointment-request.html',
+      controller: ModalInstanceCtrl,
+      scope: $scope,
+      resolve: {
+        userForm: function () {
+          return $scope.userForm;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      console.log('selected item', selectedItem)
+
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  var ModalInstanceCtrl = function ($modalInstance, userForm) {
+    $scope.form = {}
+    $scope.submitForm = function (info) {
+      if ($scope.form.userForm.$valid) {
+        apptService.checkWorking(info).then((response) => {
+          $scope.info = {};
+        })
+        console.log('user form is in scope');
+        $modalInstance.close('closed');
+      } else {
+        console.log('userform is not in scope');
+      }
+    };
+
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+  }
+
+  $scope.showSuccess = function ($modalInstance) {
+    $scope.message = "Show Form Button Clicked";
+    console.log($scope.message);
+
+    var modalInstanceTwo = $modal.open({
+      templateUrl: '../app/views/appointment-response.html',
+    });
+
+    $scope.close = function ($modalInstance) {
+      $modalInstance.dismiss('cancel');
+    };
+  }
+
 })
