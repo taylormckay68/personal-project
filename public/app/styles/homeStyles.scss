@@ -49,18 +49,78 @@ $defaultGrey: #696D70;
             align-content: space-around;
             flex-wrap: wrap;
             li {
-                button:nth-child(1) {
-                    width: 175px;
+                .business-phone-button {
+                    background-color: white;
+                    margin-right: 25px;
+                    border-radius: 10px;
                     height: 40px;
-                    margin-left: 30px;
-                    background: green;
+                    width: 164px;
+                    font-family: $defaultFont;
                 }
-                button:nth-child(2) {
-                    width: 150ps;
+                .request-appointment-button {
+                    background-color: #90b5d6;
                     height: 40px;
-                    background: gray;
+                    width: 200px;
+                    border-radius: 10px;
+                    font-family: $defaultFont;
+                    color: white;
                 }
             }
         }
     }
 }
+
+.about-sw-chiro {
+    height: 700px;
+    width: 100vw;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .about-left {
+        height: 400px;
+        width: 30vw;
+        margin-right: 55px;
+        background: url("../app/assets/office.jpg") 50% / cover no-repeat;
+    }
+    .about-right {
+        width: 30vw;
+        font-family: $defaultFont;
+        h4 {
+            font-size: 25px;
+        }
+        p {
+            line-height: 20px;
+        }
+    }
+}
+
+.meet-the-dr {
+    height: 700px;
+    width: 100vw;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .meet-the-dr-left {
+        width: 30vw;
+        font-family: $defaultFont;
+        h4 {
+            font-size: 25px;
+        }
+        p {
+            line-height: 20px;
+        }
+    }
+    .meet-the-dr-right {
+        height: 400px;
+        width: 30vw;
+        margin-left: 55px;
+        background: url("../app/assets/family.jpg") 50% / cover no-repeat;
+    }
+}
+

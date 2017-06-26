@@ -1,0 +1,86 @@
+$defaultFont: Tahoma,
+Geneva,
+sans-serif;
+$defaultGrey: #696D70;
+.services-container {
+    margin-top: 79px;
+}
+
+.jumbotron-services {
+    height: 380px;
+    width: 100%;
+    background: url("../app/assets/slc-valley.jpg") 50% / cover no-repeat;
+}
+
+.jumbotron-services-cover {
+    height: 380px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .50);
+    color: white;
+    font-family: $defaultFont;
+    margin: 0 auto;
+}
+
+.jumbotron-services-content {
+    width: 60vw;
+    margin: 0 auto;
+    padding-top: 100px;
+    line-height: 20px;
+    h1 {
+        font-size: 35px;
+    }
+    li {
+        display: inline-block;
+        margin-right: 15px;
+    }
+}
+
+.services-phone-button {
+    width: 175px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid white;
+}
+
+.services-request-appointment-button {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #6488ca;
+    background-color: #6488ca;
+}
+
+.services-content-container {
+    width: 60vw;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px 0;
+    font-family: $defaultFont;
+    h1 {
+        font-size: 45px;
+        line-height: 65px;
+    }
+    h3 {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    p {
+        line-height: 25px;
+    }
+}
+
+.services-request-appointment-button-centered {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+    button {
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        border: 1px solid #6488ca;
+        background-color: #6488ca;
+        color: white;
+    }
+}

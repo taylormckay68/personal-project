@@ -51,7 +51,46 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'u
             templateUrl: './app/views/add-patient.html',
             controller: 'gridCtrl'
         })
-        
+        .state('neck-shoulder', {
+            url: '/services/neck-shoulder',
+            templateUrl: './app/views/neck-shoulder.html',
+            controller: 'mainCtrl'
+        })
+        .state('pregnancy-care', {
+            url: '/services/pregnancy',
+            templateUrl: './app/views/pregnancy.html',
+            controller: 'mainCtrl'
+        })
+        .state('massage-therapy', {
+            url: '/services/massage',
+            templateUrl: './app/views/massage-therapy.html',
+            controller: 'mainCtrl'
+        })
+        .state('back-pain', {
+            url: '/services/back-pain',
+            templateUrl: './app/views/back-pain.html',
+            controller: 'mainCtrl'
+        })
+        .state('sciatica-management', {
+            url: '/services/sciatica-management',
+            templateUrl: './app/views/sciatica-management.html',
+            controller: 'mainCtrl'
+        })
+        .state('scoliosis', {
+            url: '/services/scoliosis',
+            templateUrl: './app/views/scoliosis.html',
+            controller: 'mainCtrl'
+        })
+        .state('tmj', {
+            url: '/services/tmj',
+            templateUrl: './app/views/tmj.html',
+            controller: 'mainCtrl'
+        })
+        .state('headaches', {
+            url: '/services/headaches',
+            templateUrl: './app/views/headaches.html',
+            controller: 'mainCtrl'
+        })
         
 
 });

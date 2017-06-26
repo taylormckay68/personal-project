@@ -23,10 +23,42 @@
                     </div>
                 </a>
             </li>
-            <li><a ui-sref="contact">Contact Us</a></li>
-            <li><a ui-sref="services">Services</a></li>
-            <li><a ui-sref="payments">Online Payment</a></li>
+            <li class="dropdown">
+                <a class="dropdown">
+                    <div>
+                        <span>Services</span>
+                        <div class="dropdown-content">
+                            <a ui-sref="neck-shoulder">
+                                <p>Neck/Shoulder Pain</p>
+                            </a>
+                            <a ui-sref="pregnancy-care">
+                                <p>Pregnancy Care</p>
+                            </a>
+                            <a ui-sref="massage-therapy">
+                                <p>Massage Therapy</p>
+                            </a>
+                            <a ui-sref="back-pain">
+                                <p>Back Pain</p>
+                            </a>
+                            <a ui-sref="sciatica-management">
+                                <p>Sciatica Management</p>
+                            </a>
+                            <a ui-sref="scoliosis">
+                                <p>Scoliosis</p>
+                            </a>
+                            <a ui-sref="tmj">
+                                <p>TMJ</p>
+                            </a>
+                            <a ui-sref="headaches">
+                                <p>Headaches</p>
+                            </a>
 
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li><a ui-sref="contact">Contact Us</a></li>
+            <li><a ui-sref="payments">Online Payment</a></li>
             <li class="request-appt"><a href="" ng-click="showForm()">
                 <img src="./app/assets/calendar.svg" alt="">
                 <div>Request </br>Appointment</div>
@@ -40,6 +72,49 @@
     <ui-view></ui-view>
 
     <footer>
+        <div class="office-info">
+            <div class="office-info-location">
+                <h4>LOCATION</h4>
+                </br>
+                <p>Southwest Chiropractic</p>
+                <p>10358 S Redwood Rd</p>
+                <p>South Jordan, UT 84095</p>
+                <p>Phone: 801-254-9400</p>
+            </div>
+            <div class="office-info-hours">
+                <h4>OFFICE HOURS</h4>
+                </br>
+                <p ng-repeat="day in days">
+                    <label>{{day}} <span>{{openHours[$index]}}</span></label>
+
+                </p>
+            </div>
+            <div class="office-info-contact">
+                <h4>GET IN TOUCH</h4>
+                </br>
+                <p>email@email.com</p>
+                </br>
+                <div>
+                    <ul>
+                        <li>
+                            <a href="tel:8012549400">
+                            <button class="office-info-contact-button ">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>801-254-9400</span>
+                            </button>
+                        </a>
+                        </li>
+                        <li>
+                            <button class="office-info-contact-button-appt" type="button" ng-click="showForm()">Request Appointment</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.0244607427694!2d-111.94156068459961!3d40.56313707934831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752861b6ac8e901%3A0x3a13035473ee5e8c!2sSouthwest+Chiropractic!5e0!3m2!1sen!2sus!4v1498495473757"
+                width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
         <ul>
             <li><a href="/auth">Admin</a></li>
         </ul>

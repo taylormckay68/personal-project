@@ -49,13 +49,17 @@ nav {
         
         .request-appt {
             text-align: center;
-            color: $defaultGrey;
+            color: white;
             border-left: 1px solid $defaultGrey;
             border-right: 1px solid $defaultGrey;
             padding: 0 10px;
             height: 100%;
             display: flex;
             align-items: center;
+            background-color: #6488ca;
+            div {
+                color: white;
+            }
             img {
                 height: 25px;
                 fill: red;
@@ -72,4 +76,104 @@ nav {
         }
     }
 }
+.dropdown {
+    position: relative;
+    display: flex;
+    height: 100%;
+    width: 85px;
+    align-items: center;
+    justify-content: center;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 93px;
+    left: 0;
+    color: white;
+    
+    p {
+        border-bottom: 1px solid gray;
+        line-height: 20px;
+        padding: 7px 15px;
+    }
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+    p:hover {
+        color: orange;
+    }
+}
 
+.office-info {
+    height: 350px;
+    width: 100vw;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: $defaultFont;
+    line-height: 25px;
+    padding: 55px 15vw 0 15vw;
+    .office-info-location {
+        h4 {
+            color: #6488ca;
+            font-size: 13px;
+        }
+    }
+    .office-info-hours {
+        text-align: left;
+        h4 {
+            color: #6488ca;
+            font-size: 13px;
+        }
+        p {
+            display: block;
+            font-size: 15px;
+            line-height: 26px;
+            width: 300px;
+            label {
+                display: block;
+                clear: both;
+                span {
+                    display: inline-block;
+                    float: right;
+                    width: 170px;
+                }
+            }
+        }
+    }
+    .office-info-contact {
+        h4 {
+            color: #6488ca;
+            font-size: 13px;
+        }
+    }
+}
+
+.office-info-contact-button {
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #6488ca;
+    color: #6488ca;
+    margin-bottom: 25px;
+}
+.office-info-contact-button-appt {
+    width: 200px;
+    height: 40px;
+    background-color: #6488ca;
+    border-radius: 10px;
+    border: 1px solid #6488ca;
+    color: white;
+    margin-bottom: 25px;
+}
+iframe {
+    width: 100vw;
+}

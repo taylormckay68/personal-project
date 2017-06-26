@@ -94,15 +94,82 @@
       align-content: space-around;
       -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
-      .business-container div ul li button:nth-child(1) {
-        width: 175px;
+      .business-container div ul li .business-phone-button {
+        background-color: white;
+        margin-right: 25px;
+        border-radius: 10px;
         height: 40px;
-        margin-left: 30px;
-        background: green; }
-      .business-container div ul li button:nth-child(2) {
-        width: 150ps;
+        width: 164px;
+        font-family: Tahoma, Geneva, sans-serif; }
+      .business-container div ul li .request-appointment-button {
+        background-color: #90b5d6;
         height: 40px;
-        background: gray; }
+        width: 200px;
+        border-radius: 10px;
+        font-family: Tahoma, Geneva, sans-serif;
+        color: white; }
+
+.about-sw-chiro {
+  height: 700px;
+  width: 100vw;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .about-sw-chiro .about-left {
+    height: 400px;
+    width: 30vw;
+    margin-right: 55px;
+    background: url("../app/assets/office.jpg") 50%/cover no-repeat; }
+  .about-sw-chiro .about-right {
+    width: 30vw;
+    font-family: Tahoma, Geneva, sans-serif; }
+    .about-sw-chiro .about-right h4 {
+      font-size: 25px; }
+    .about-sw-chiro .about-right p {
+      line-height: 20px; }
+
+.meet-the-dr {
+  height: 700px;
+  width: 100vw;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+  .meet-the-dr .meet-the-dr-left {
+    width: 30vw;
+    font-family: Tahoma, Geneva, sans-serif; }
+    .meet-the-dr .meet-the-dr-left h4 {
+      font-size: 25px; }
+    .meet-the-dr .meet-the-dr-left p {
+      line-height: 20px; }
+  .meet-the-dr .meet-the-dr-right {
+    height: 400px;
+    width: 30vw;
+    margin-left: 55px;
+    background: url("../app/assets/family.jpg") 50%/cover no-repeat; }
 
 a {
   color: #696D70;
@@ -153,7 +220,7 @@ nav {
     font-family: Tahoma, Geneva, sans-serif; }
     nav .navbar .request-appt {
       text-align: center;
-      color: #696D70;
+      color: white;
       border-left: 1px solid #696D70;
       border-right: 1px solid #696D70;
       padding: 0 10px;
@@ -163,7 +230,10 @@ nav {
       display: flex;
       -webkit-box-align: center;
       -ms-flex-align: center;
-      align-items: center; }
+      align-items: center;
+      background-color: #6488ca; }
+      nav .navbar .request-appt div {
+        color: white; }
       nav .navbar .request-appt img {
         height: 25px;
         fill: red; }
@@ -182,8 +252,180 @@ nav {
       nav .navbar .home-logo img {
         height: 100%; }
 
+.dropdown {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  width: 85px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: black;
+  min-width: 160px;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 93px;
+  left: 0;
+  color: white; }
+  .dropdown-content p {
+    border-bottom: 1px solid gray;
+    line-height: 20px;
+    padding: 7px 15px; }
+
+.dropdown:hover .dropdown-content {
+  display: block; }
+  .dropdown:hover .dropdown-content p:hover {
+    color: orange; }
+
+.office-info {
+  height: 350px;
+  width: 100vw;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid lightgray;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  font-family: Tahoma, Geneva, sans-serif;
+  line-height: 25px;
+  padding: 55px 15vw 0 15vw; }
+  .office-info .office-info-location h4 {
+    color: #6488ca;
+    font-size: 13px; }
+  .office-info .office-info-hours {
+    text-align: left; }
+    .office-info .office-info-hours h4 {
+      color: #6488ca;
+      font-size: 13px; }
+    .office-info .office-info-hours p {
+      display: block;
+      font-size: 15px;
+      line-height: 26px;
+      width: 300px; }
+      .office-info .office-info-hours p label {
+        display: block;
+        clear: both; }
+        .office-info .office-info-hours p label span {
+          display: inline-block;
+          float: right;
+          width: 170px; }
+  .office-info .office-info-contact h4 {
+    color: #6488ca;
+    font-size: 13px; }
+
+.office-info-contact-button {
+  width: 200px;
+  height: 40px;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #6488ca;
+  color: #6488ca;
+  margin-bottom: 25px; }
+
+.office-info-contact-button-appt {
+  width: 200px;
+  height: 40px;
+  background-color: #6488ca;
+  border-radius: 10px;
+  border: 1px solid #6488ca;
+  color: white;
+  margin-bottom: 25px; }
+
+iframe {
+  width: 100vw; }
+
 .payment-container {
   margin-top: 79px; }
+
+.services-container {
+  margin-top: 79px; }
+
+.jumbotron-services {
+  height: 380px;
+  width: 100%;
+  background: url("../app/assets/slc-valley.jpg") 50%/cover no-repeat; }
+
+.jumbotron-services-cover {
+  height: 380px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: Tahoma, Geneva, sans-serif;
+  margin: 0 auto; }
+
+.jumbotron-services-content {
+  width: 60vw;
+  margin: 0 auto;
+  padding-top: 100px;
+  line-height: 20px; }
+  .jumbotron-services-content h1 {
+    font-size: 35px; }
+  .jumbotron-services-content li {
+    display: inline-block;
+    margin-right: 15px; }
+
+.services-phone-button {
+  width: 175px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid white; }
+
+.services-request-appointment-button {
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid #6488ca;
+  background-color: #6488ca; }
+
+.services-content-container {
+  width: 60vw;
+  margin: 0 auto;
+  background-color: white;
+  padding: 40px 0;
+  font-family: Tahoma, Geneva, sans-serif; }
+  .services-content-container h1 {
+    font-size: 45px;
+    line-height: 65px; }
+  .services-content-container h3 {
+    font-size: 20px;
+    font-weight: bold; }
+  .services-content-container p {
+    line-height: 25px; }
+
+.services-request-appointment-button-centered {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 20px; }
+  .services-request-appointment-button-centered button {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #6488ca;
+    background-color: #6488ca;
+    color: white; }
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126

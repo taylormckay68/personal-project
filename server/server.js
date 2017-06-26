@@ -55,23 +55,6 @@ passport.use(new Auth0Strategy({
                 return done(null, user);
             }
         })
-
-
-
-
-        // db.getUserByAuthId([profile.id], function (err, user) {
-        //     user = user[0];
-        //     if (!user) { //if there isn't one, we'll create one!
-        //         console.log('CREATING USER');
-        //         db.createUserByAuth([profile.displayName, profile.id], function (err, user) {
-        //             console.log(user);
-        //             return done(err, user[0]); // GOES TO SERIALIZE USER
-        //         })
-        //     } else { //when we find the user, return it
-        //         console.log('FOUND USER', user);
-        //         return done(err, user);
-        //     }
-        // })
     }
 ));
 

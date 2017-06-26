@@ -41,81 +41,39 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'u
         url: '/admin/addpatient',
         templateUrl: './app/views/add-patient.html',
         controller: 'gridCtrl'
+    }).state('neck-shoulder', {
+        url: '/services/neck-shoulder',
+        templateUrl: './app/views/neck-shoulder.html',
+        controller: 'mainCtrl'
+    }).state('pregnancy-care', {
+        url: '/services/pregnancy',
+        templateUrl: './app/views/pregnancy.html',
+        controller: 'mainCtrl'
+    }).state('massage-therapy', {
+        url: '/services/massage',
+        templateUrl: './app/views/massage-therapy.html',
+        controller: 'mainCtrl'
+    }).state('back-pain', {
+        url: '/services/back-pain',
+        templateUrl: './app/views/back-pain.html',
+        controller: 'mainCtrl'
+    }).state('sciatica-management', {
+        url: '/services/sciatica-management',
+        templateUrl: './app/views/sciatica-management.html',
+        controller: 'mainCtrl'
+    }).state('scoliosis', {
+        url: '/services/scoliosis',
+        templateUrl: './app/views/scoliosis.html',
+        controller: 'mainCtrl'
+    }).state('tmj', {
+        url: '/services/tmj',
+        templateUrl: './app/views/tmj.html',
+        controller: 'mainCtrl'
+    }).state('headaches', {
+        url: '/services/headaches',
+        templateUrl: './app/views/headaches.html',
+        controller: 'mainCtrl'
     });
-});
-'use strict';
-
-angular.module('personal-project').service('adminService', function ($http) {
-
-    this.getPatients = function () {
-        return $http({
-            url: '/api/getPatients',
-            method: 'GET'
-        });
-    };
-    this.getPayments = function () {
-        return $http({
-            url: '/api/getPayments',
-            method: 'GET'
-        });
-    };
-    this.addPatient = function (patient) {
-        return $http({
-            url: '/api/addPatient',
-            method: 'POST',
-            data: patient
-        });
-    };
-    // this.addPayment = () => {
-    //     return $http({
-    //         url: '/api/addPayment',
-    //         method: 'POST',
-    //         data: {
-    //             firstname: $scope.firstname,
-    //             lastname: $scope.lastname,
-    //             patientid: $scope.patientid,
-    //             payment: $scope.mockPrice
-    //         }
-    //     })
-    // }
-});
-'use strict';
-
-angular.module('personal-project').service('apptService', function ($http) {
-
-    this.checkWorking = function (info) {
-        return $http({
-            url: '/api/sendrequest',
-            method: 'POST',
-            data: info
-        });
-    };
-});
-'use strict';
-
-angular.module('personal-project').service('userService', function ($http) {
-
-  this.getUser = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/me'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-  };
-
-  this.logout = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/logout'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-  };
 });
 'use strict';
 
@@ -184,7 +142,8 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
   //     !response ? alert('not working') : $state.go('home');
   //   })
   // }
-
+  $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  $scope.openHours = ['8:30 am - 6:00 pm', '8:30 am - 12:00 pm', '8:30 am - 6:00 pm', '8:30 am - 6:00 pm', '8:30 am - 12:00 pm', 'Closed', 'Closed'];
 
   $scope.charge = function () {
 
@@ -280,5 +239,79 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     $scope.close = function ($modalInstance) {
       $modalInstance.dismiss('cancel');
     };
+  };
+});
+'use strict';
+
+angular.module('personal-project').service('adminService', function ($http) {
+
+    this.getPatients = function () {
+        return $http({
+            url: '/api/getPatients',
+            method: 'GET'
+        });
+    };
+    this.getPayments = function () {
+        return $http({
+            url: '/api/getPayments',
+            method: 'GET'
+        });
+    };
+    this.addPatient = function (patient) {
+        return $http({
+            url: '/api/addPatient',
+            method: 'POST',
+            data: patient
+        });
+    };
+    // this.addPayment = () => {
+    //     return $http({
+    //         url: '/api/addPayment',
+    //         method: 'POST',
+    //         data: {
+    //             firstname: $scope.firstname,
+    //             lastname: $scope.lastname,
+    //             patientid: $scope.patientid,
+    //             payment: $scope.mockPrice
+    //         }
+    //     })
+    // }
+});
+'use strict';
+
+angular.module('personal-project').service('apptService', function ($http) {
+
+    this.checkWorking = function (info) {
+        return $http({
+            url: '/api/sendrequest',
+            method: 'POST',
+            data: info
+        });
+    };
+});
+'use strict';
+
+angular.module('personal-project').service('userService', function ($http) {
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
   };
 });
