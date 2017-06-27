@@ -52,24 +52,127 @@ $defaultGrey: #696D70;
                 .business-phone-button {
                     background-color: white;
                     margin-right: 25px;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     height: 40px;
                     width: 164px;
                     font-family: $defaultFont;
+                    border: 1px solid white;
                 }
                 .request-appointment-button {
                     background-color: #90b5d6;
                     height: 40px;
                     width: 200px;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     font-family: $defaultFont;
                     color: white;
+                    border: 1px solid #90b5d6;
                 }
             }
         }
     }
 }
 
+.home-services-container {
+    height: 700px;
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    .home-services-offer-container {
+        width: 70vw;
+        height: 100%;
+        font-family: $defaultFont;
+    }
+    h5 {
+        text-align: center;
+        margin-top: 70px;
+        color: gray;
+    }
+    h4 {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 40px;
+    }
+}
+.home-services-boxes-container {
+    width: 85%;
+    margin: 75px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.home-services-img:nth-child(1) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/back-pain1.jpg') 40% / cover no-repeat;
+    border: 1px solid white;
+}
+.home-services-img:nth-child(2) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/headaches.jpg') 90%/ cover no-repeat;
+    border: 1px solid white;
+}
+.home-services-img:nth-child(3) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/massage-therapy.jpg') 90%/ cover no-repeat;
+    border: 1px solid white;
+}
+.home-services-img:nth-child(4) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/pregnancy.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+.home-services-img:nth-child(5) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/sciatica.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+.home-services-img:nth-child(6) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/scoliosis.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+.home-services-img:nth-child(7) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/tmj.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+.home-services-img:nth-child(8) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/neck-pain.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+.home-services-img-cover {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, .50);
+    div {
+        line-height: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+        p {
+            font-size: 10px;
+        }
+    }
+}
+.home-services-img-cover:hover {
+    background-color: rgba(0, 0, 0, .0);
+}
 .about-sw-chiro {
     height: 700px;
     width: 100vw;
@@ -123,4 +226,3 @@ $defaultGrey: #696D70;
         background: url("../app/assets/family.jpg") 50% / cover no-repeat;
     }
 }
-

@@ -77,6 +77,80 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'u
 });
 'use strict';
 
+angular.module('personal-project').service('adminService', function ($http) {
+
+    this.getPatients = function () {
+        return $http({
+            url: '/api/getPatients',
+            method: 'GET'
+        });
+    };
+    this.getPayments = function () {
+        return $http({
+            url: '/api/getPayments',
+            method: 'GET'
+        });
+    };
+    this.addPatient = function (patient) {
+        return $http({
+            url: '/api/addPatient',
+            method: 'POST',
+            data: patient
+        });
+    };
+    // this.addPayment = () => {
+    //     return $http({
+    //         url: '/api/addPayment',
+    //         method: 'POST',
+    //         data: {
+    //             firstname: $scope.firstname,
+    //             lastname: $scope.lastname,
+    //             patientid: $scope.patientid,
+    //             payment: $scope.mockPrice
+    //         }
+    //     })
+    // }
+});
+'use strict';
+
+angular.module('personal-project').service('apptService', function ($http) {
+
+    this.checkWorking = function (info) {
+        return $http({
+            url: '/api/sendrequest',
+            method: 'POST',
+            data: info
+        });
+    };
+});
+'use strict';
+
+angular.module('personal-project').service('userService', function ($http) {
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+});
+'use strict';
+
 angular.module('personal-project').controller('gridCtrl', function ($scope, adminService, $state) {
 
     // function getUser() {
@@ -239,79 +313,5 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     $scope.close = function ($modalInstance) {
       $modalInstance.dismiss('cancel');
     };
-  };
-});
-'use strict';
-
-angular.module('personal-project').service('adminService', function ($http) {
-
-    this.getPatients = function () {
-        return $http({
-            url: '/api/getPatients',
-            method: 'GET'
-        });
-    };
-    this.getPayments = function () {
-        return $http({
-            url: '/api/getPayments',
-            method: 'GET'
-        });
-    };
-    this.addPatient = function (patient) {
-        return $http({
-            url: '/api/addPatient',
-            method: 'POST',
-            data: patient
-        });
-    };
-    // this.addPayment = () => {
-    //     return $http({
-    //         url: '/api/addPayment',
-    //         method: 'POST',
-    //         data: {
-    //             firstname: $scope.firstname,
-    //             lastname: $scope.lastname,
-    //             patientid: $scope.patientid,
-    //             payment: $scope.mockPrice
-    //         }
-    //     })
-    // }
-});
-'use strict';
-
-angular.module('personal-project').service('apptService', function ($http) {
-
-    this.checkWorking = function (info) {
-        return $http({
-            url: '/api/sendrequest',
-            method: 'POST',
-            data: info
-        });
-    };
-});
-'use strict';
-
-angular.module('personal-project').service('userService', function ($http) {
-
-  this.getUser = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/me'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-  };
-
-  this.logout = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/logout'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
   };
 });

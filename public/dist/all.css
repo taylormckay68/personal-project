@@ -97,17 +97,144 @@
       .business-container div ul li .business-phone-button {
         background-color: white;
         margin-right: 25px;
-        border-radius: 10px;
+        border-radius: 5px;
         height: 40px;
         width: 164px;
-        font-family: Tahoma, Geneva, sans-serif; }
+        font-family: Tahoma, Geneva, sans-serif;
+        border: 1px solid white; }
       .business-container div ul li .request-appointment-button {
         background-color: #90b5d6;
         height: 40px;
         width: 200px;
-        border-radius: 10px;
+        border-radius: 5px;
         font-family: Tahoma, Geneva, sans-serif;
-        color: white; }
+        color: white;
+        border: 1px solid #90b5d6; }
+
+.home-services-container {
+  height: 700px;
+  width: 100vw;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  .home-services-container .home-services-offer-container {
+    width: 70vw;
+    height: 100%;
+    font-family: Tahoma, Geneva, sans-serif; }
+  .home-services-container h5 {
+    text-align: center;
+    margin-top: 70px;
+    color: gray; }
+  .home-services-container h4 {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 40px; }
+
+.home-services-boxes-container {
+  width: 85%;
+  margin: 75px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+.home-services-img:nth-child(1) {
+  width: 230px;
+  height: 200px;
+  background: url("../app/assets/back-pain1.jpg") 40%/cover no-repeat;
+  border: 1px solid white; }
+
+.home-services-img:nth-child(2) {
+  width: 230px;
+  height: 200px;
+  background: url("../app/assets/headaches.jpg") 90%/cover no-repeat;
+  border: 1px solid white; }
+
+.home-services-img:nth-child(3) {
+  width: 230px;
+  height: 200px;
+  background: url("../app/assets/massage-therapy.jpg") 90%/cover no-repeat;
+  border: 1px solid white; }
+
+.home-services-img:nth-child(4) {
+  width: 230px;
+  height: 200px;
+  background: url("../app/assets/pregnancy.jpg") 50%/cover no-repeat;
+  border: 1px solid white; }
+
+.home-services-img:nth-child(5) {
+  width: 230px;
+  height: 200px;
+  background: url("../app/assets/sciatica.jpg") 50%/cover no-repeat;
+  border: 1px solid white; }
+
+.home-services-img:nth-child(6) {
+  width: 230px;
+  height: 200px;
+  background: url("../app/assets/scoliosis.jpg") 50%/cover no-repeat;
+  border: 1px solid white; }
+
+.home-services-img:nth-child(7) {
+  width: 230px;
+  height: 200px;
+  background: url("../app/assets/tmj.jpg") 50%/cover no-repeat;
+  border: 1px solid white; }
+
+.home-services-img:nth-child(8) {
+  width: 230px;
+  height: 200px;
+  background: url("../app/assets/neck-pain.jpg") 50%/cover no-repeat;
+  border: 1px solid white; }
+
+.home-services-img-cover {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); }
+  .home-services-img-cover div {
+    line-height: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center; }
+    .home-services-img-cover div p {
+      font-size: 10px; }
+
+.home-services-img-cover:hover {
+  background-color: transparent; }
 
 .about-sw-chiro {
   height: 700px;
