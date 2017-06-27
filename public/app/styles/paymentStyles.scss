@@ -1,3 +1,9 @@
+$defaultFont: Tahoma,
+Geneva,
+sans-serif;
+$defaultGrey: #696D70;
+
 .payment-container {
     margin-top: 79px; 
+    font-family: $defaultFont;
 }

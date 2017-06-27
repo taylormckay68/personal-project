@@ -165,6 +165,10 @@ nav {
     color: #6488ca;
     margin-bottom: 25px;
 }
+.office-info-contact-button:hover {
+    background-color: #6488ca;
+    color: white;
+}
 .office-info-contact-button-appt {
     width: 200px;
     height: 40px;
@@ -173,6 +177,10 @@ nav {
     border: 1px solid #6488ca;
     color: white;
     margin-bottom: 25px;
+}
+.office-info-contact-button-appt:hover {
+    background-color: white;
+    color: #6488ca;
 }
 iframe {
     width: 100vw;

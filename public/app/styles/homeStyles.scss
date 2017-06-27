@@ -78,6 +78,7 @@ $defaultGrey: #696D70;
     background-color: white;
     display: flex;
     justify-content: center;
+    border-bottom: 1px solid lightgray;
     .home-services-offer-container {
         width: 70vw;
         height: 100%;
@@ -172,6 +173,10 @@ $defaultGrey: #696D70;
 }
 .home-services-img-cover:hover {
     background-color: rgba(0, 0, 0, .0);
+    color: black;
+    p {
+        text-decoration: underline;
+    }
 }
 .about-sw-chiro {
     height: 700px;

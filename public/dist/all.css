@@ -22,7 +22,8 @@
   height: 250px; }
 
 .appointment-container {
-  margin-top: 79px; }
+  margin-top: 79px;
+  font-family: Tahoma, Geneva, sans-serif; }
 
 .congrats-container {
   margin-top: 79px; }
@@ -120,7 +121,8 @@
   display: flex;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center; }
+  justify-content: center;
+  border-bottom: 1px solid lightgray; }
   .home-services-container .home-services-offer-container {
     width: 70vw;
     height: 100%;
@@ -234,7 +236,10 @@
       font-size: 10px; }
 
 .home-services-img-cover:hover {
-  background-color: transparent; }
+  background-color: transparent;
+  color: black; }
+  .home-services-img-cover:hover p {
+    text-decoration: underline; }
 
 .about-sw-chiro {
   height: 700px;
@@ -467,6 +472,10 @@ nav {
   color: #6488ca;
   margin-bottom: 25px; }
 
+.office-info-contact-button:hover {
+  background-color: #6488ca;
+  color: white; }
+
 .office-info-contact-button-appt {
   width: 200px;
   height: 40px;
@@ -476,11 +485,16 @@ nav {
   color: white;
   margin-bottom: 25px; }
 
+.office-info-contact-button-appt:hover {
+  background-color: white;
+  color: #6488ca; }
+
 iframe {
   width: 100vw; }
 
 .payment-container {
-  margin-top: 79px; }
+  margin-top: 79px;
+  font-family: Tahoma, Geneva, sans-serif; }
 
 .services-container {
   margin-top: 79px; }

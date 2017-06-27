@@ -1,7 +1,7 @@
 angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'ui.bootstrap'])
-.config(function($stateProvider, $urlRouterProvider, stripeProvider) {
+.config(function($stateProvider, $urlRouterProvider, stripeProvider, $uiViewScrollProvider) {
 
-    
+    $uiViewScrollProvider.useAnchorScroll()
     
     stripeProvider.setPublishableKey('pk_test_3lJ1tey4i8EkKrNeZdIL8REE');
 
