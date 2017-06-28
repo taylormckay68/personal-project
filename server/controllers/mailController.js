@@ -39,5 +39,38 @@ module.exports = {
             res.status(200).send(info);
         });
 
+    },
+    sendMessage: (req, res) => {
+        const {name, email, phone, comments, checkbox} = req.body
+        
+
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            secure: true,
+            auth: {
+                user: config.emailuser,
+                pass: config.emailpass
+            }
+        });
+
+        // setup email data with unicode symbols
+        let mailOptions = {
+            from: `${name} <${email}>`, // sender address
+            to: config.toemail, // list of receivers
+            subject: 'Contact us', // Subject line
+            text: comments, // plain text body
+            // html: `<b>${ req.body.body }</b>` // html body
+        };
+
+
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log(error)
+                res.send(error)
+            }
+            // console.log('Message %s send: %s', info.messageId, info.response);
+            res.status(200).send(info);
+        });
+
     }
 }

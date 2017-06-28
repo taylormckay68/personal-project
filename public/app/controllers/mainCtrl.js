@@ -1,9 +1,9 @@
-angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, apptService, adminService, $modal, $log) {
+angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, mailService, adminService, $modal, $log) {
 
 
   $scope.payment = {};
 
-  $scope.hours = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",  "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM"]
+  $scope.hours = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM"]
 
   // $scope.submitForm = function (info) {
   //   apptService.checkWorking(info).then(response => {
@@ -12,7 +12,15 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
   // }
   $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   $scope.openHours = ['8:30 am - 6:00 pm', '8:30 am - 12:00 pm', '8:30 am - 6:00 pm', '8:30 am - 6:00 pm', '8:30 am - 12:00 pm', 'Closed', 'Closed'];
-  
+
+  $scope.showSuccessfulPayment = function ($modalInstance) {
+    var modalInstanceThree = $modal.open({
+      templateUrl: '../app/views/congrats.html',
+    });
+  }
+  $scope.goToHome = function() {
+    $state.go('home')
+  }
 
   $scope.charge = function () {
 
@@ -47,7 +55,7 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
       })
       .then(function (payment) {
         console.log('successfully submitted payment for $', payment);
-        $state.go('congrats');
+        $scope.showSuccessfulPayment();
       })
       .catch(function (err) {
         if (err.type && /^Stripe/.test(err.type)) {
@@ -88,7 +96,7 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     $scope.form = {}
     $scope.submitForm = function (info) {
       if ($scope.form.userForm.$valid) {
-        apptService.checkWorking(info).then((response) => {
+        mailService.checkWorking(info).then((response) => {
           $scope.info = {};
         })
         console.log('user form is in scope');
@@ -114,6 +122,11 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     $scope.close = function ($modalInstance) {
       $modalInstance.dismiss('cancel');
     };
+  }
+  $scope.submitContactUs = function (contactMessage) {
+    mailService.submitMessage(contactMessage).then((response) => {
+      $scope.contactMessage = {};
+    })
   }
 
 })

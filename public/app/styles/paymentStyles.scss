@@ -6,4 +6,15 @@ $defaultGrey: #696D70;
 .payment-container {
     margin-top: 79px; 
     font-family: $defaultFont;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 25px 0;
+    form {
+        width: 60vw;
+        h1 {
+            text-align: center;
+            font-size: 30px;
+        }
+    }
 }

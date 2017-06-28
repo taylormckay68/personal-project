@@ -115,13 +115,20 @@ angular.module('personal-project').service('adminService', function ($http) {
 });
 'use strict';
 
-angular.module('personal-project').service('apptService', function ($http) {
+angular.module('personal-project').service('mailService', function ($http) {
 
     this.checkWorking = function (info) {
         return $http({
             url: '/api/sendrequest',
             method: 'POST',
             data: info
+        });
+    };
+    this.submitMessage = function (contactMessage) {
+        return $http({
+            url: '/api/sendMessage',
+            method: 'POST',
+            data: contactMessage
         });
     };
 });
@@ -207,7 +214,7 @@ angular.module('personal-project').controller('gridCtrl', function ($scope, admi
 });
 'use strict';
 
-angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, apptService, adminService, $modal, $log) {
+angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, mailService, adminService, $modal, $log) {
 
   $scope.payment = {};
 
@@ -220,6 +227,15 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
   // }
   $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   $scope.openHours = ['8:30 am - 6:00 pm', '8:30 am - 12:00 pm', '8:30 am - 6:00 pm', '8:30 am - 6:00 pm', '8:30 am - 12:00 pm', 'Closed', 'Closed'];
+
+  $scope.showSuccessfulPayment = function ($modalInstance) {
+    var modalInstanceThree = $modal.open({
+      templateUrl: '../app/views/congrats.html'
+    });
+  };
+  $scope.goToHome = function () {
+    $state.go('home');
+  };
 
   $scope.charge = function () {
 
@@ -250,7 +266,7 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
       });
     }).then(function (payment) {
       console.log('successfully submitted payment for $', payment);
-      $state.go('congrats');
+      $scope.showSuccessfulPayment();
     }).catch(function (err) {
       if (err.type && /^Stripe/.test(err.type)) {
         console.log('Stripe error: ', err.message);
@@ -289,7 +305,7 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     $scope.form = {};
     $scope.submitForm = function (info) {
       if ($scope.form.userForm.$valid) {
-        apptService.checkWorking(info).then(function (response) {
+        mailService.checkWorking(info).then(function (response) {
           $scope.info = {};
         });
         console.log('user form is in scope');
@@ -315,5 +331,10 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     $scope.close = function ($modalInstance) {
       $modalInstance.dismiss('cancel');
     };
+  };
+  $scope.submitContactUs = function (contactMessage) {
+    mailService.submitMessage(contactMessage).then(function (response) {
+      $scope.contactMessage = {};
+    });
   };
 });

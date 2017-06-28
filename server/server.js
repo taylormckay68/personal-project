@@ -108,6 +108,8 @@ app.post('/api/addPayment', mainController.addPayment)
 
 app.post('/api/sendrequest', mailController.sendEmail)
 
+app.post('/api/sendMessage', mailController.sendMessage);
+
 
 app.post('/api/payment', (req, res, next) => {
 

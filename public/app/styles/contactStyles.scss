@@ -1,0 +1,78 @@
+$defaultFont: Tahoma,
+Geneva,
+sans-serif;
+$defaultGrey: #696D70;
+.contact-container {
+    margin-top: 79px;
+    font-family: $defaultFont;
+    background-color: #f7f7f7;
+}
+
+.contact-location-container {
+    width: 65vw;
+    margin: 0 auto;
+    h1 {
+        font-size: 40px;
+        padding-top: 20px;
+    }
+}
+
+.contact-map-hours-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-top: 50px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 0;
+    iframe {
+        width: 450px;
+        height: 350px;
+    }
+    .contact-office-info-hours {
+        text-align: left;
+        h4 {
+            color: #6488ca;
+            font-size: 13px;
+        }
+        p {
+            display: block;
+            font-size: 15px;
+            line-height: 26px;
+            width: 300px;
+            label {
+                display: block;
+                clear: both;
+                span {
+                    display: inline-block;
+                    float: right;
+                    width: 170px;
+                }
+            }
+        }
+    }
+    .contact-office-info-contact {
+        h4 {
+            color: #6488ca;
+            font-size: 13px;
+        }
+    }
+}
+
+.contact-form-container {
+    width: 100vw;
+    background-color: white;
+    .contact-form-wrapper {
+        width: 65vw;
+        margin: 0 auto;
+        padding: 25px 80px;
+        
+        .contact-form-header {
+            text-align: center;
+            line-height: 40px;
+            h2 {
+                font-size: 30px;
+            }
+        }
+    }
+}

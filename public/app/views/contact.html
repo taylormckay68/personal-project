@@ -1,0 +1,82 @@
+<div class="contact-container">
+
+    <div class="contact-location-container">
+        <h1>Southwest Chiropractic, South Jordan, UT</h1>
+        <div class="contact-map-hours-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3031.0244607427694!2d-111.94156068459961!3d40.56313707934831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8752861b6ac8e901%3A0x3a13035473ee5e8c!2sSouthwest+Chiropractic!5e0!3m2!1sen!2sus!4v1498495473757"
+                width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <div class="contact-office-info-hours">
+                <h4>OFFICE HOURS</h4>
+                </br>
+                <p ng-repeat="day in days">
+                    <label>{{day}} <span>{{openHours[$index]}}</span></label>
+
+                </p>
+            </div>
+            <div class="contact-office-info-contact">
+                <h4>GET IN TOUCH</h4>
+                </br>
+                <p>email@email.com</p>
+                </br>
+                <div>
+                    <ul>
+                        <li>
+                            <a href="tel:8012549400">
+                            <button class="office-info-contact-button ">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>801-254-9400</span>
+                            </button>
+                        </a>
+                        </li>
+                        <li>
+                            <button class="office-info-contact-button-appt" type="button" ng-click="showForm()">Request Appointment</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-form-container">
+        <div class="contact-form-wrapper">
+            <div class="contact-form-header">
+                <p>CONTACT US</p>
+                <h2>Send A Message To Southwest Chiropractic</h2>
+            </div>
+            <div class="contact-form">
+                <form name="form.userForm" ng-submit="submitContactUs(contactMessage)">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="name" ng-model="contactMessage.name" required>
+                        <p ng-show="form.userForm.name.$invalid && !form.userForm.name.$pristine" class="help-block">Your name is required.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" class="form-control" name="email" ng-model="contactMessage.email" required>
+                        <p ng-show="form.userForm.email.$invalid && !form.userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" name="phone" ng-model="contactMessage.phone" required>
+                        <p ng-show="form.userForm.phone.$error.minlength" class="help-block">Phone number is too short.</p>
+                        <p ng-show="form.userForm.phone.$error.maxlength" class="help-block">Phone number is too long.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Comments</label>
+                        <textarea class="form-control" ng-model="contactMessage.comments" rows="5" required></textarea>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" name="check" ng-model="contactMessage.checkbox" ng-required="true">
+                            I understand and agree that any information submitted will be forwarded to our office by email and not via a secure messaging system. This form should not be used to transmit private health information, and we disclaim all warranties with respect to the privacy and confidentiality of any information submitted through this form.
+                            <p ng-show="form.userForm.checkbox.$invalid && !form.userForm.checkbox.$pristine" class="help-block">Please check box</p>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="form.userForm.$invalid" ng-click="showSuccess()">Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

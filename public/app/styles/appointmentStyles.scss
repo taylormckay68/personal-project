@@ -3,7 +3,14 @@ Geneva,
 sans-serif;
 $defaultGrey: #696D70;
 
-.appointment-container {
-    margin-top: 79px;
+.appointment-request-container {
     font-family: $defaultFont;
+    padding: 20px;
+}
+.appointment-response-container {
+    font-family: $defaultFont;
+    padding: 20px;
+    p {
+        font-size: 20px;
+    }
 }
