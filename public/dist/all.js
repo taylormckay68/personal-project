@@ -79,87 +79,6 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'u
 });
 'use strict';
 
-angular.module('personal-project').service('adminService', function ($http) {
-
-    this.getPatients = function () {
-        return $http({
-            url: '/api/getPatients',
-            method: 'GET'
-        });
-    };
-    this.getPayments = function () {
-        return $http({
-            url: '/api/getPayments',
-            method: 'GET'
-        });
-    };
-    this.addPatient = function (patient) {
-        return $http({
-            url: '/api/addPatient',
-            method: 'POST',
-            data: patient
-        });
-    };
-    // this.addPayment = () => {
-    //     return $http({
-    //         url: '/api/addPayment',
-    //         method: 'POST',
-    //         data: {
-    //             firstname: $scope.firstname,
-    //             lastname: $scope.lastname,
-    //             patientid: $scope.patientid,
-    //             payment: $scope.mockPrice
-    //         }
-    //     })
-    // }
-});
-'use strict';
-
-angular.module('personal-project').service('mailService', function ($http) {
-
-    this.checkWorking = function (info) {
-        return $http({
-            url: '/api/sendrequest',
-            method: 'POST',
-            data: info
-        });
-    };
-    this.submitMessage = function (contactMessage) {
-        return $http({
-            url: '/api/sendMessage',
-            method: 'POST',
-            data: contactMessage
-        });
-    };
-});
-'use strict';
-
-angular.module('personal-project').service('userService', function ($http) {
-
-  this.getUser = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/me'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-  };
-
-  this.logout = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/logout'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-  };
-});
-'use strict';
-
 angular.module('personal-project').controller('gridCtrl', function ($scope, adminService, $state) {
 
     // function getUser() {
@@ -191,6 +110,9 @@ angular.module('personal-project').controller('gridCtrl', function ($scope, admi
     $scope.gridOptionsPayments = {
         enableFiltering: true
     };
+    $scope.gridOptionsTotals = {
+        enableFiltering: true
+    };
 
     $scope.receivePatients = function () {
         adminService.getPatients().then(function (response) {
@@ -205,6 +127,13 @@ angular.module('personal-project').controller('gridCtrl', function ($scope, admi
         });
     };
     $scope.receivePayments();
+
+    $scope.receiveTotals = function () {
+        adminService.getTotal().then(function (response) {
+            $scope.gridOptionsTotals.data = response.data;
+        });
+    };
+    $scope.receiveTotals();
 
     $scope.submitPatient = function (patient) {
         adminService.addPatient(patient).then(function (response) {
@@ -227,6 +156,19 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
   // }
   $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   $scope.openHours = ['8:30 am - 6:00 pm', '8:30 am - 12:00 pm', '8:30 am - 6:00 pm', '8:30 am - 6:00 pm', '8:30 am - 12:00 pm', 'Closed', 'Closed'];
+
+  $scope.showSubServices = false;
+
+  $scope.showServices = function () {
+    $scope.showSubServices = !$scope.showSubServices;
+  };
+  $scope.showHideServices = function () {
+    if ($scope.showSubServices) {
+      $scope.showSubServices = !$scope.showSubServices;
+    } else {
+      $scope.showSubServices = false;
+    }
+  };
 
   $scope.showSuccessfulPayment = function ($modalInstance) {
     var modalInstanceThree = $modal.open({
@@ -335,6 +277,93 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
   $scope.submitContactUs = function (contactMessage) {
     mailService.submitMessage(contactMessage).then(function (response) {
       $scope.contactMessage = {};
+    });
+  };
+});
+'use strict';
+
+angular.module('personal-project').service('adminService', function ($http) {
+
+    this.getPatients = function () {
+        return $http({
+            url: '/api/getPatients',
+            method: 'GET'
+        });
+    };
+    this.getPayments = function () {
+        return $http({
+            url: '/api/getPayments',
+            method: 'GET'
+        });
+    };
+    this.getTotal = function () {
+        return $http({
+            url: '/api/getTotal',
+            method: 'GET'
+        });
+    };
+    this.addPatient = function (patient) {
+        return $http({
+            url: '/api/addPatient',
+            method: 'POST',
+            data: patient
+        });
+    };
+    // this.addPayment = () => {
+    //     return $http({
+    //         url: '/api/addPayment',
+    //         method: 'POST',
+    //         data: {
+    //             firstname: $scope.firstname,
+    //             lastname: $scope.lastname,
+    //             patientid: $scope.patientid,
+    //             payment: $scope.mockPrice
+    //         }
+    //     })
+    // }
+});
+'use strict';
+
+angular.module('personal-project').service('mailService', function ($http) {
+
+    this.checkWorking = function (info) {
+        return $http({
+            url: '/api/sendrequest',
+            method: 'POST',
+            data: info
+        });
+    };
+    this.submitMessage = function (contactMessage) {
+        return $http({
+            url: '/api/sendMessage',
+            method: 'POST',
+            data: contactMessage
+        });
+    };
+});
+'use strict';
+
+angular.module('personal-project').service('userService', function ($http) {
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
     });
   };
 });

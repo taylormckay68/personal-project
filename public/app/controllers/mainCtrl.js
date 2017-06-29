@@ -13,6 +13,20 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
   $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   $scope.openHours = ['8:30 am - 6:00 pm', '8:30 am - 12:00 pm', '8:30 am - 6:00 pm', '8:30 am - 6:00 pm', '8:30 am - 12:00 pm', 'Closed', 'Closed'];
 
+  $scope.showSubServices = false;
+
+  $scope.showServices = () => {
+    $scope.showSubServices = !$scope.showSubServices;
+  }
+  $scope.showHideServices = () => {
+    if ($scope.showSubServices) {
+      $scope.showSubServices = !$scope.showSubServices;
+    } else {
+      $scope.showSubServices = false;
+    }
+  }
+
+
   $scope.showSuccessfulPayment = function ($modalInstance) {
     var modalInstanceThree = $modal.open({
       templateUrl: '../app/views/congrats.html',

@@ -9,6 +9,11 @@ module.exports = {
             res.send(resp);
         })
     },
+    getTotal: (req, res, next) => {
+        req.app.get('db').getTotalBalance().then((resp) => {
+            res.send(resp);
+        })
+    },
     addPatient: (req, res, next) => {
         let patient = [
             req.body.patientid,

@@ -12,6 +12,12 @@ angular.module('personal-project').service('adminService', function($http) {
             method: 'GET'
         })
     }
+    this.getTotal = () => {
+        return $http({
+            url: '/api/getTotal',
+            method: 'GET'
+        })
+    }
     this.addPatient = (patient) => {
         return $http({
             url: '/api/addPatient',

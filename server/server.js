@@ -102,6 +102,8 @@ app.get('/api/getPatients', mainController.getPatients);
 
 app.get('/api/getPayments', mainController.getPayments);
 
+app.get('/api/getTotal', mainController.getTotal);
+
 app.post('/api/addPatient', mainController.addPatient);
 
 app.post('/api/addPayment', mainController.addPayment)

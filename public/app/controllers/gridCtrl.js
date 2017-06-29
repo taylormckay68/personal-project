@@ -31,6 +31,9 @@ angular.module('personal-project').controller('gridCtrl', function ($scope, admi
     $scope.gridOptionsPayments = {
         enableFiltering: true,
     }
+    $scope.gridOptionsTotals = {
+        enableFiltering: true,
+    }
 
     $scope.receivePatients = () => {
         adminService.getPatients().then((response) => {
@@ -45,6 +48,13 @@ angular.module('personal-project').controller('gridCtrl', function ($scope, admi
         })
     }
     $scope.receivePayments();
+
+    $scope.receiveTotals = () => {
+        adminService.getTotal().then((response) => {
+            $scope.gridOptionsTotals.data = response.data;
+        })
+    }
+    $scope.receiveTotals();
 
     $scope.submitPatient = function (patient) {
         adminService.addPatient(patient).then((response) => {

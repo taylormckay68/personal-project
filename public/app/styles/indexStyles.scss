@@ -2,12 +2,11 @@ $defaultFont: Tahoma,
 Geneva,
 sans-serif;
 $defaultGrey: #696D70;
-
-
 a {
     color: $defaultGrey;
     text-decoration: none;
 }
+
 a:link {
     color: $defaultGrey;
     text-decoration: none;
@@ -22,10 +21,56 @@ a:visited {
     color: $defaultGrey;
     text-decoration: none;
 }
+
 footer {
     height: 100px;
     width: 100vw;
     padding-bottom: -50px;
+}
+
+.ham {
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    font-size: 45px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    font-family: $defaultFont;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover,
+.offcanvas a:focus {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
 nav {
@@ -46,7 +91,6 @@ nav {
         padding: 0 50px;
         padding: 0px 125px;
         font-family: $defaultFont;
-        
         .request-appt {
             text-align: center;
             color: white;
@@ -76,6 +120,7 @@ nav {
         }
     }
 }
+
 .dropdown {
     position: relative;
     display: flex;
@@ -84,23 +129,24 @@ nav {
     align-items: center;
     justify-content: center;
 }
+
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: black;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     top: 93px;
     left: 0;
     color: white;
-    
     p {
         border-bottom: 1px solid gray;
         line-height: 20px;
         padding: 7px 15px;
     }
 }
+
 .dropdown:hover .dropdown-content {
     display: block;
     p:hover {
@@ -165,10 +211,12 @@ nav {
     color: #6488ca;
     margin-bottom: 25px;
 }
+
 .office-info-contact-button:hover {
     background-color: #6488ca;
     color: white;
 }
+
 .office-info-contact-button-appt {
     width: 200px;
     height: 40px;
@@ -178,10 +226,18 @@ nav {
     color: white;
     margin-bottom: 25px;
 }
+
 .office-info-contact-button-appt:hover {
     background-color: white;
     color: #6488ca;
 }
+
 iframe {
     width: 100vw;
+}
+
+@media (min-width: 950px) {
+    .ham {
+        display: none;
+    }
 }
