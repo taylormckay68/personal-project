@@ -19,13 +19,13 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" ng-click="showHideServices()">&times;</a>
             <a ui-sref="home" onclick="closeNav()" ng-click="showHideServices()">Home</a>
             <a href="" ng-click="showServices()">Services
-                <a ui-sref="neck-shoulder" ng-show="showSubServices" onclick="closeNav()">- Neck/Shoulder Pain</a>
-                <a ui-sref="pregnancy-care" ng-show="showSubServices" onclick="closeNav()">- Pregnancy Care</a>
-                <a ui-sref="massage-therapy" ng-show="showSubServices" onclick="closeNav()">- Massage Therapy</a>
-                <a ui-sref="back-pain" ng-show="showSubServices" onclick="closeNav()">- Back Pain</a>
-                <a ui-sref="sciatica-management" ng-show="showSubServices" onclick="closeNav()">- Sciatica Management</a>
-                <a ui-sref="scoliosis" ng-show="showSubServices" onclick="closeNav()">- Scoliosis</a>
-                <a ui-sref="tmj" ng-show="showSubServices" onclick="closeNav()">- TMJ</a>
+                <a ui-sref="neck-shoulder" ng-show="showSubServices" onclick="closeNav()" ng-click="showServices()">- Neck/Shoulder Pain</a>
+                <a ui-sref="pregnancy-care" ng-show="showSubServices" onclick="closeNav()" ng-click="showServices()">- Pregnancy Care</a>
+                <a ui-sref="massage-therapy" ng-show="showSubServices" onclick="closeNav()" ng-click="showServices()">- Massage Therapy</a>
+                <a ui-sref="back-pain" ng-show="showSubServices" onclick="closeNav()" ng-click="showServices()">- Back Pain</a>
+                <a ui-sref="sciatica-management" ng-show="showSubServices" onclick="closeNav()" ng-click="showServices()">- Sciatica Management</a>
+                <a ui-sref="scoliosis" ng-show="showSubServices" onclick="closeNav()" ng-click="showServices()">- Scoliosis</a>
+                <a ui-sref="tmj" ng-show="showSubServices" onclick="closeNav()" ng-click="showServices()">- TMJ</a>
                 <a ui-sref="headaches" ng-show="showSubServices" onclick="closeNav()" ng-click="showServices()">- Headaches</a>
             </a>
             <a ui-sref="contact" onclick="closeNav()" ng-click="showHideServices()">Contact Us</a>
@@ -44,7 +44,7 @@
             }
         </script>
         <ul class="navbar">
-            <li>
+            <li class="navbar-hide">
                 <a ui-sref="home">
                     <div class="home-logo">
                         <img src="./app/assets/chiropractic-logo.png"></img>
@@ -52,7 +52,7 @@
                     </div>
                 </a>
             </li>
-            <li class="dropdown">
+            <li class="dropdown navbar-hide">
                 <a class="dropdown">
                     <div>
                         <span>Services</span>
@@ -86,8 +86,8 @@
                     </div>
                 </a>
             </li>
-            <li><a ui-sref="contact">Contact Us</a></li>
-            <li><a ui-sref="payments">Online Payment</a></li>
+            <li class="navbar-hide"><a ui-sref="contact">Contact Us</a></li>
+            <li class="navbar-hide"><a ui-sref="payments">Online Payment</a></li>
             <li class="request-appt"><a href="" ng-click="showForm()">
                 <img src="./app/assets/calendar.svg" alt="">
                 <div>Request </br>Appointment</div>

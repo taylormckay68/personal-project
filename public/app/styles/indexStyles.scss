@@ -29,12 +29,7 @@ footer {
 }
 
 .ham {
-    position: absolute;
-    left: 25px;
-    top: 25px;
-    font-size: 45px;
-    cursor: pointer;
-    z-index: 2;
+    display: none;
 }
 
 .sidenav {
@@ -88,7 +83,6 @@ nav {
         align-items: center;
         list-style: none;
         font-size: 20px;
-        padding: 0 50px;
         padding: 0px 125px;
         font-family: $defaultFont;
         .request-appt {
@@ -155,21 +149,23 @@ nav {
 }
 
 .office-info {
-    height: 350px;
     width: 100vw;
     background-color: #f7f7f7;
     border-bottom: 1px solid lightgray;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: flex-start;
     font-family: $defaultFont;
     line-height: 25px;
-    padding: 55px 15vw 0 15vw;
+    padding: 55px 15vw 55px 15vw;
     .office-info-location {
+        margin-bottom: 40px;
         h4 {
             color: #6488ca;
             font-size: 13px;
+            
         }
     }
     .office-info-hours {
@@ -236,8 +232,27 @@ iframe {
     width: 100vw;
 }
 
-@media (min-width: 950px) {
+.navbar-hide {
+    display: flex;
+}
+
+@media (max-width: 950px) {
     .ham {
+        position: absolute;
+        left: 25px;
+        top: 25px;
+        font-size: 45px;
+        cursor: pointer;
+        z-index: 2;
+        display: flex;
+    }
+    .navbar-hide {
         display: none;
+    }
+    nav {
+        .navbar {
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
     }
 }

@@ -184,7 +184,6 @@
         border: 1px solid #90b5d6; }
 
 .home-services-container {
-  height: 700px;
   width: 100vw;
   background-color: white;
   display: -webkit-box;
@@ -313,7 +312,6 @@
     text-decoration: underline; }
 
 .about-sw-chiro {
-  height: 700px;
   width: 100vw;
   background-color: #f7f7f7;
   border-bottom: 1px solid lightgray;
@@ -329,22 +327,23 @@
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+  padding: 25px 0; }
   .about-sw-chiro .about-left {
-    height: 400px;
-    width: 30vw;
-    margin-right: 55px;
-    background: url("../app/assets/office.jpg") 50%/cover no-repeat; }
+    height: auto;
+    width: 30vw; }
+    .about-sw-chiro .about-left img {
+      width: 100%; }
   .about-sw-chiro .about-right {
-    width: 30vw;
-    font-family: Tahoma, Geneva, sans-serif; }
+    width: 32vw;
+    font-family: Tahoma, Geneva, sans-serif;
+    margin-left: 55px; }
     .about-sw-chiro .about-right h4 {
       font-size: 25px; }
     .about-sw-chiro .about-right p {
       line-height: 20px; }
 
 .meet-the-dr {
-  height: 700px;
   width: 100vw;
   background-color: white;
   border-bottom: 1px solid lightgray;
@@ -360,19 +359,65 @@
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+  padding: 25px 0; }
   .meet-the-dr .meet-the-dr-left {
-    width: 30vw;
-    font-family: Tahoma, Geneva, sans-serif; }
+    width: 32vw;
+    font-family: Tahoma, Geneva, sans-serif;
+    margin-left: 55px; }
     .meet-the-dr .meet-the-dr-left h4 {
       font-size: 25px; }
     .meet-the-dr .meet-the-dr-left p {
       line-height: 20px; }
   .meet-the-dr .meet-the-dr-right {
-    height: 400px;
-    width: 30vw;
-    margin-left: 55px;
-    background: url("../app/assets/family.jpg") 50%/cover no-repeat; }
+    width: 32vw;
+    height: auto;
+    margin-left: 55px; }
+
+@media (max-width: 950px) {
+  .about-sw-chiro {
+    display: block; }
+    .about-sw-chiro .about-left {
+      width: 90vw;
+      margin: 0 auto; }
+    .about-sw-chiro .about-right {
+      width: 90vw;
+      margin: 0 auto; }
+  .meet-the-dr {
+    display: block; }
+    .meet-the-dr .meet-the-dr-left {
+      width: 90vw;
+      margin: 0 auto; }
+    .meet-the-dr .meet-the-dr-right {
+      width: 90vw;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; } }
+
+@media (max-width: 500px) {
+  .home-jumbotron {
+    height: 500px; }
+  .business-container {
+    width: 275px; }
+    .business-container .business-southwest {
+      font-size: 40px; }
+    .business-container .business-chiropractic {
+      font-size: 30px; }
+  .business-container div ul {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+  .business-phone-button {
+    background-color: white;
+    margin-right: 0px;
+    border-radius: 5px;
+    height: 40px;
+    width: 200px;
+    font-family: Tahoma, Geneva, sans-serif;
+    border: 1px solid white; } }
 
 a {
   color: #696D70;
@@ -396,12 +441,7 @@ footer {
   padding-bottom: -50px; }
 
 .ham {
-  position: absolute;
-  left: 25px;
-  top: 25px;
-  font-size: 45px;
-  cursor: pointer;
-  z-index: 2; }
+  display: none; }
 
 .sidenav {
   height: 100%;
@@ -460,7 +500,6 @@ nav {
     align-items: center;
     list-style: none;
     font-size: 20px;
-    padding: 0 50px;
     padding: 0px 125px;
     font-family: Tahoma, Geneva, sans-serif; }
     nav .navbar .request-appt {
@@ -533,7 +572,6 @@ nav {
     color: orange; }
 
 .office-info {
-  height: 350px;
   width: 100vw;
   background-color: #f7f7f7;
   border-bottom: 1px solid lightgray;
@@ -544,6 +582,8 @@ nav {
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   -ms-flex-pack: distribute;
   justify-content: space-around;
   -webkit-box-align: start;
@@ -551,10 +591,12 @@ nav {
   align-items: flex-start;
   font-family: Tahoma, Geneva, sans-serif;
   line-height: 25px;
-  padding: 55px 15vw 0 15vw; }
-  .office-info .office-info-location h4 {
-    color: #6488ca;
-    font-size: 13px; }
+  padding: 55px 15vw 55px 15vw; }
+  .office-info .office-info-location {
+    margin-bottom: 40px; }
+    .office-info .office-info-location h4 {
+      color: #6488ca;
+      font-size: 13px; }
   .office-info .office-info-hours {
     text-align: left; }
     .office-info .office-info-hours h4 {
@@ -605,9 +647,29 @@ nav {
 iframe {
   width: 100vw; }
 
-@media (min-width: 950px) {
+.navbar-hide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+@media (max-width: 950px) {
   .ham {
-    display: none; } }
+    position: absolute;
+    left: 25px;
+    top: 25px;
+    font-size: 45px;
+    cursor: pointer;
+    z-index: 2;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .navbar-hide {
+    display: none; }
+  nav .navbar {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding-right: 20px; } }
 
 .payment-container {
   margin-top: 79px;
