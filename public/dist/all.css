@@ -17,6 +17,13 @@
     .admin-container div a img {
       height: 25px; }
 
+.grid-container {
+  padding-top: 15px;
+  margin: 0 auto;
+  width: 80vw; }
+  .grid-container a {
+    margin-bottom: 10px; }
+
 .myGrid {
   width: 1200px;
   height: 250px; }
@@ -40,7 +47,7 @@
   background-color: #f7f7f7; }
 
 .contact-location-container {
-  width: 65vw;
+  width: 70vw;
   margin: 0 auto; }
   .contact-location-container h1 {
     font-size: 40px;
@@ -64,9 +71,13 @@
   padding: 20px 0; }
   .contact-map-hours-container iframe {
     width: 450px;
-    height: 350px; }
+    height: 350px;
+    margin-bottom: 25px;
+    margin-right: 15px; }
   .contact-map-hours-container .contact-office-info-hours {
-    text-align: left; }
+    text-align: left;
+    margin-bottom: 25px;
+    margin-right: 15px; }
     .contact-map-hours-container .contact-office-info-hours h4 {
       color: #6488ca;
       font-size: 13px; }
@@ -98,6 +109,85 @@
       line-height: 40px; }
       .contact-form-container .contact-form-wrapper .contact-form-header h2 {
         font-size: 30px; }
+
+@media (max-width: 900px) {
+  .contact-form-container {
+    width: 100vw;
+    background-color: white; }
+    .contact-form-container .contact-form-wrapper {
+      width: 70vw;
+      margin: 0 auto;
+      padding: 0px 0px; }
+      .contact-form-container .contact-form-wrapper .contact-form-header {
+        text-align: center;
+        line-height: 40px; }
+        .contact-form-container .contact-form-wrapper .contact-form-header h2 {
+          font-size: 30px; } }
+
+@media (max-width: 700px) {
+  .contact-location-container {
+    width: 80vw;
+    margin: 0 auto; }
+    .contact-location-container h1 {
+      font-size: 30px;
+      padding-top: 20px; } }
+
+@media (max-width: 375px) {
+  .contact-map-hours-container {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-top: 50px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 20px 0; }
+    .contact-map-hours-container iframe {
+      width: 80vw;
+      height: 350px;
+      margin-bottom: 25px;
+      margin-right: 15px; }
+    .contact-map-hours-container .contact-office-info-hours {
+      text-align: left;
+      margin-bottom: 25px;
+      margin-right: 15px; }
+      .contact-map-hours-container .contact-office-info-hours h4 {
+        color: #6488ca;
+        font-size: 13px; }
+      .contact-map-hours-container .contact-office-info-hours p {
+        display: block;
+        font-size: 15px;
+        line-height: 26px;
+        width: 300px; }
+        .contact-map-hours-container .contact-office-info-hours p label {
+          display: block;
+          clear: both; }
+          .contact-map-hours-container .contact-office-info-hours p label span {
+            display: inline-block;
+            float: right;
+            width: 170px; }
+    .contact-map-hours-container .contact-office-info-contact h4 {
+      color: #6488ca;
+      font-size: 13px; }
+  .contact-form-container {
+    width: 100vw;
+    background-color: white; }
+    .contact-form-container .contact-form-wrapper {
+      width: 90vw;
+      margin: 0 auto;
+      padding: 0px 0px; }
+      .contact-form-container .contact-form-wrapper .contact-form-header {
+        text-align: center;
+        line-height: 40px; }
+        .contact-form-container .contact-form-wrapper .contact-form-header h2 {
+          font-size: 30px; } }
 
 .home-container {
   margin-top: 79px; }
@@ -373,29 +463,54 @@
     width: 32vw;
     height: auto;
     margin-left: 55px; }
+    .meet-the-dr .meet-the-dr-right img {
+      width: 100%; }
 
-@media (max-width: 950px) {
+@media (max-width: 1025px) {
   .about-sw-chiro {
-    display: block; }
+    display: block;
+    margin: 0 auto; }
     .about-sw-chiro .about-left {
       width: 90vw;
       margin: 0 auto; }
     .about-sw-chiro .about-right {
       width: 90vw;
-      margin: 0 auto; }
+      margin-top: 15px;
+      margin: 15px auto; }
   .meet-the-dr {
-    display: block; }
+    width: 100vw;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    display: block;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 25px 0;
+    margin: 0 auto; }
     .meet-the-dr .meet-the-dr-left {
       width: 90vw;
+      font-family: Tahoma, Geneva, sans-serif;
+      margin-left: 0px;
       margin: 0 auto; }
+      .meet-the-dr .meet-the-dr-left h4 {
+        font-size: 25px; }
+      .meet-the-dr .meet-the-dr-left p {
+        line-height: 20px; }
     .meet-the-dr .meet-the-dr-right {
       width: 90vw;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      justify-content: center; } }
+      height: auto;
+      margin-left: 0px;
+      margin: 0 auto; }
+      .meet-the-dr .meet-the-dr-right img {
+        width: 100%;
+        margin-top: 15px; } }
 
 @media (max-width: 500px) {
   .home-jumbotron {
@@ -406,18 +521,19 @@
       font-size: 40px; }
     .business-container .business-chiropractic {
       font-size: 30px; }
+    .business-container div ul li .business-phone-button {
+      background-color: white;
+      margin-right: 0px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      height: 40px;
+      width: 200px;
+      font-family: Tahoma, Geneva, sans-serif;
+      border: 1px solid white; }
   .business-container div ul {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
-    justify-content: center; }
-  .business-phone-button {
-    background-color: white;
-    margin-right: 0px;
-    border-radius: 5px;
-    height: 40px;
-    width: 200px;
-    font-family: Tahoma, Geneva, sans-serif;
-    border: 1px solid white; } }
+    justify-content: center; } }
 
 a {
   color: #696D70;
@@ -591,14 +707,15 @@ nav {
   align-items: flex-start;
   font-family: Tahoma, Geneva, sans-serif;
   line-height: 25px;
-  padding: 55px 15vw 55px 15vw; }
+  padding: 55px 10vw 55px 10vw; }
   .office-info .office-info-location {
     margin-bottom: 40px; }
     .office-info .office-info-location h4 {
       color: #6488ca;
       font-size: 13px; }
   .office-info .office-info-hours {
-    text-align: left; }
+    text-align: left;
+    margin-bottom: 40px; }
     .office-info .office-info-hours h4 {
       color: #6488ca;
       font-size: 13px; }
@@ -652,7 +769,34 @@ iframe {
   display: -ms-flexbox;
   display: flex; }
 
-@media (max-width: 950px) {
+.footer-bottom-container {
+  width: 100vw;
+  height: 250px;
+  background-color: #384d72; }
+
+.footer-bottom {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-family: Tahoma, Geneva, sans-serif;
+  line-height: 28px; }
+  .footer-bottom p {
+    font-size: 20px;
+    color: #6488ca; }
+
+@media (max-width: 900px) {
   .ham {
     position: absolute;
     left: 25px;
@@ -670,6 +814,54 @@ iframe {
     -ms-flex-pack: end;
     justify-content: flex-end;
     padding-right: 20px; } }
+
+@media (max-width: 625px) {
+  .office-info {
+    display: block; }
+  .footer-bottom {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-family: Tahoma, Geneva, sans-serif;
+    line-height: 28px; }
+    .footer-bottom p {
+      font-size: 15px;
+      color: #6488ca; } }
+
+@media (max-width: 400px) {
+  .footer-bottom {
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-family: Tahoma, Geneva, sans-serif;
+    line-height: 28px; }
+    .footer-bottom p {
+      font-size: 12px;
+      color: #6488ca; } }
 
 .payment-container {
   margin-top: 79px;
@@ -695,12 +887,12 @@ iframe {
   margin-top: 79px; }
 
 .jumbotron-services {
-  height: 380px;
+  height: 400px;
   width: 100%;
   background: url("../app/assets/slc-valley.jpg") 50%/cover no-repeat; }
 
 .jumbotron-services-cover {
-  height: 380px;
+  height: 400px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
@@ -709,11 +901,22 @@ iframe {
 
 .jumbotron-services-content {
   width: 60vw;
+  height: 100%;
   margin: 0 auto;
-  padding-top: 100px;
-  line-height: 20px; }
+  line-height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
   .jumbotron-services-content h1 {
-    font-size: 35px; }
+    font-size: 35px;
+    line-height: 40px; }
   .jumbotron-services-content li {
     display: inline-block;
     margin-right: 15px; }
@@ -762,6 +965,111 @@ iframe {
     border: 1px solid #6488ca;
     background-color: #6488ca;
     color: white; }
+
+@media (max-width: 1000px) {
+  .jumbotron-services-content {
+    width: 60vw;
+    margin: 0 auto;
+    line-height: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .jumbotron-services-content h1 {
+      font-size: 35px;
+      line-height: 40px; }
+    .jumbotron-services-content li {
+      display: inline-block;
+      margin-right: 15px; } }
+
+@media (max-width: 850px) {
+  .jumbotron-services-content {
+    width: 80vw;
+    margin: 0 auto;
+    line-height: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .jumbotron-services-content h1 {
+      font-size: 35px;
+      line-height: 40px; }
+    .jumbotron-services-content li {
+      display: inline-block;
+      margin-right: 15px; }
+  .services-content-container {
+    width: 80vw;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px 0;
+    font-family: Tahoma, Geneva, sans-serif; }
+    .services-content-container h1 {
+      font-size: 45px;
+      line-height: 65px; }
+    .services-content-container h3 {
+      font-size: 20px;
+      font-weight: bold; }
+    .services-content-container p {
+      line-height: 25px; } }
+
+@media (max-width: 683px) {
+  .jumbotron-services-content {
+    width: 80vw;
+    margin: 0 auto;
+    line-height: 25px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .jumbotron-services-content h1 {
+      font-size: 35px;
+      line-height: 40px; }
+    .jumbotron-services-content li {
+      display: inline-block;
+      margin-right: 15px; } }
+
+@media (max-width: 512px) {
+  .services-phone-button {
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: white;
+    border: 1px solid white;
+    margin-bottom: 15px; }
+  .jumbotron-services-content div ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center; }
+  .services-content-container {
+    width: 90vw;
+    margin: 0 auto;
+    background-color: white;
+    padding: 40px 0;
+    font-family: Tahoma, Geneva, sans-serif; }
+    .services-content-container h1 {
+      font-size: 45px;
+      line-height: 65px; }
+    .services-content-container h3 {
+      font-size: 20px;
+      font-weight: bold; }
+    .services-content-container p {
+      line-height: 25px; } }
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126

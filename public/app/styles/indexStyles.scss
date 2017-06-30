@@ -159,17 +159,17 @@ nav {
     align-items: flex-start;
     font-family: $defaultFont;
     line-height: 25px;
-    padding: 55px 15vw 55px 15vw;
+    padding: 55px 10vw 55px 10vw;
     .office-info-location {
         margin-bottom: 40px;
         h4 {
             color: #6488ca;
             font-size: 13px;
-            
         }
     }
     .office-info-hours {
         text-align: left;
+        margin-bottom: 40px;
         h4 {
             color: #6488ca;
             font-size: 13px;
@@ -236,7 +236,28 @@ iframe {
     display: flex;
 }
 
-@media (max-width: 950px) {
+.footer-bottom-container {
+    width: 100vw;
+    height: 250px;
+    background-color: #384d72;
+}
+
+.footer-bottom {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: $defaultFont;
+    line-height: 28px;
+    p {
+        font-size: 20px;
+        color: #6488ca;
+    }
+}
+
+@media (max-width: 900px) {
     .ham {
         position: absolute;
         left: 25px;
@@ -253,6 +274,42 @@ iframe {
         .navbar {
             justify-content: flex-end;
             padding-right: 20px;
+        }
+    }
+}
+
+@media(max-width: 625px) {
+    .office-info {
+        display: block;
+    }
+    .footer-bottom {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: $defaultFont;
+        line-height: 28px;
+        p {
+            font-size: 15px;
+            color: #6488ca;
+        }
+    }
+}
+@media(max-width: 400px) {
+    .footer-bottom {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: $defaultFont;
+        line-height: 28px;
+        p {
+            font-size: 12px;
+            color: #6488ca;
         }
     }
 }

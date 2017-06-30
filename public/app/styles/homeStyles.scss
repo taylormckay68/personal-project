@@ -1,303 +1,338 @@
-    $defaultFont: Tahoma,
-    Geneva,
-    sans-serif;
-    $defaultGrey: #696D70;
-    .home-container {
-        margin-top: 79px;
-    }
+$defaultFont: Tahoma,
+Geneva,
+sans-serif;
+$defaultGrey: #696D70;
+.home-container {
+    margin-top: 79px;
+}
 
-    .home-jumbotron {
-        height: 750px;
-        width: 100vw;
-        background: url("../app/assets/slc-valley.jpg") 50% / cover no-repeat;
+.home-jumbotron {
+    height: 750px;
+    width: 100vw;
+    background: url("../app/assets/slc-valley.jpg") 50% / cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.business-container {
+    height: 300px;
+    width: 450px;
+    background-color: rgba(0, 0, 0, .35);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: $defaultFont;
+    .business-southwest {
+        font-size: 60px;
+        color: white;
+        text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
+    }
+    .business-chiropractic {
+        font-size: 45px;
+        color: white;
+        text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
+    }
+    .business-south-jordan {
+        font-size: 20px;
+        color: white;
+        text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
+    }
+    div {
         display: flex;
         justify-content: center;
-        align-items: center;
-    }
-
-    .business-container {
-        height: 300px;
-        width: 450px;
-        background-color: rgba(0, 0, 0, .35);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-family: $defaultFont;
-        .business-southwest {
-            font-size: 60px;
-            color: white;
-            text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
-        }
-        .business-chiropractic {
-            font-size: 45px;
-            color: white;
-            text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
-        }
-        .business-south-jordan {
-            font-size: 20px;
-            color: white;
-            text-shadow: -1px 0 $defaultGrey, 0 1px $defaultGrey, 1px 0 $defaultGrey, 0 -1px $defaultGrey;
-        }
-        div {
+        margin-top: 45px;
+        ul {
             display: flex;
-            justify-content: center;
-            margin-top: 45px;
-            ul {
-                display: flex;
-                flex-direction: row;
-                align-content: space-around;
-                flex-wrap: wrap;
-                li {
-                    .business-phone-button {
-                        background-color: white;
-                        margin-right: 25px;
-                        border-radius: 5px;
-                        height: 40px;
-                        width: 164px;
-                        font-family: $defaultFont;
-                        border: 1px solid white;
-                    }
-                    .request-appointment-button {
-                        background-color: #90b5d6;
-                        height: 40px;
-                        width: 200px;
-                        border-radius: 5px;
-                        font-family: $defaultFont;
-                        color: white;
-                        border: 1px solid #90b5d6;
-                    }
+            flex-direction: row;
+            align-content: space-around;
+            flex-wrap: wrap;
+            li {
+                .business-phone-button {
+                    background-color: white;
+                    margin-right: 25px;
+                    border-radius: 5px;
+                    height: 40px;
+                    width: 164px;
+                    font-family: $defaultFont;
+                    border: 1px solid white;
+                }
+                .request-appointment-button {
+                    background-color: #90b5d6;
+                    height: 40px;
+                    width: 200px;
+                    border-radius: 5px;
+                    font-family: $defaultFont;
+                    color: white;
+                    border: 1px solid #90b5d6;
                 }
             }
         }
     }
+}
 
-    .home-services-container {
-        width: 100vw;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        border-bottom: 1px solid lightgray;
-        .home-services-offer-container {
-            width: 70vw;
-            height: 100%;
-            font-family: $defaultFont;
-        }
-        h5 {
-            text-align: center;
-            margin-top: 70px;
-            color: gray;
-        }
-        h4 {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 40px;
-        }
-    }
-
-    .home-services-boxes-container {
-        width: 85%;
-        margin: 75px auto;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .home-services-img:nth-child(1) {
-        width: 230px;
-        height: 200px;
-        background: url('../app/assets/back-pain1.jpg') 40% / cover no-repeat;
-        border: 1px solid white;
-    }
-
-    .home-services-img:nth-child(2) {
-        width: 230px;
-        height: 200px;
-        background: url('../app/assets/headaches.jpg') 90%/ cover no-repeat;
-        border: 1px solid white;
-    }
-
-    .home-services-img:nth-child(3) {
-        width: 230px;
-        height: 200px;
-        background: url('../app/assets/massage-therapy.jpg') 90%/ cover no-repeat;
-        border: 1px solid white;
-    }
-
-    .home-services-img:nth-child(4) {
-        width: 230px;
-        height: 200px;
-        background: url('../app/assets/pregnancy.jpg') 50%/ cover no-repeat;
-        border: 1px solid white;
-    }
-
-    .home-services-img:nth-child(5) {
-        width: 230px;
-        height: 200px;
-        background: url('../app/assets/sciatica.jpg') 50%/ cover no-repeat;
-        border: 1px solid white;
-    }
-
-    .home-services-img:nth-child(6) {
-        width: 230px;
-        height: 200px;
-        background: url('../app/assets/scoliosis.jpg') 50%/ cover no-repeat;
-        border: 1px solid white;
-    }
-
-    .home-services-img:nth-child(7) {
-        width: 230px;
-        height: 200px;
-        background: url('../app/assets/tmj.jpg') 50%/ cover no-repeat;
-        border: 1px solid white;
-    }
-
-    .home-services-img:nth-child(8) {
-        width: 230px;
-        height: 200px;
-        background: url('../app/assets/neck-pain.jpg') 50%/ cover no-repeat;
-        border: 1px solid white;
-    }
-
-    .home-services-img-cover {
+.home-services-container {
+    width: 100vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid lightgray;
+    .home-services-offer-container {
+        width: 70vw;
         height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        background-color: rgba(0, 0, 0, .50);
-        div {
-            line-height: 25px;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-content: center;
-            p {
-                font-size: 10px;
-            }
-        }
+        font-family: $defaultFont;
     }
-
-    .home-services-img-cover:hover {
-        background-color: rgba(0, 0, 0, .0);
-        color: black;
-        p {
-            text-decoration: underline;
-        }
+    h5 {
+        text-align: center;
+        margin-top: 70px;
+        color: gray;
     }
+    h4 {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 40px;
+    }
+}
 
-    .about-sw-chiro {
-        width: 100vw;
-        background-color: #f7f7f7;
-        border-bottom: 1px solid lightgray;
+.home-services-boxes-container {
+    width: 85%;
+    margin: 75px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home-services-img:nth-child(1) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/back-pain1.jpg') 40% / cover no-repeat;
+    border: 1px solid white;
+}
+
+.home-services-img:nth-child(2) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/headaches.jpg') 90%/ cover no-repeat;
+    border: 1px solid white;
+}
+
+.home-services-img:nth-child(3) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/massage-therapy.jpg') 90%/ cover no-repeat;
+    border: 1px solid white;
+}
+
+.home-services-img:nth-child(4) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/pregnancy.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+
+.home-services-img:nth-child(5) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/sciatica.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+
+.home-services-img:nth-child(6) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/scoliosis.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+
+.home-services-img:nth-child(7) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/tmj.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+
+.home-services-img:nth-child(8) {
+    width: 230px;
+    height: 200px;
+    background: url('../app/assets/neck-pain.jpg') 50%/ cover no-repeat;
+    border: 1px solid white;
+}
+
+.home-services-img-cover {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgba(0, 0, 0, .50);
+    div {
+        line-height: 25px;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        align-items: center;
-        padding: 25px 0;
+        align-content: center;
+        p {
+            font-size: 10px;
+        }
+    }
+}
+
+.home-services-img-cover:hover {
+    background-color: rgba(0, 0, 0, .0);
+    color: black;
+    p {
+        text-decoration: underline;
+    }
+}
+
+.about-sw-chiro {
+    width: 100vw;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    .about-left {
+        height: auto;
+        width: 30vw;
+        img {
+            width: 100%;
+        }
+    }
+    .about-right {
+        width: 32vw;
+        font-family: $defaultFont;
+        margin-left: 55px;
+        h4 {
+            font-size: 25px;
+        }
+        p {
+            line-height: 20px;
+        }
+    }
+}
+
+.meet-the-dr {
+    width: 100vw;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    .meet-the-dr-left {
+        width: 32vw;
+        font-family: $defaultFont;
+        margin-left: 55px;
+        h4 {
+            font-size: 25px;
+        }
+        p {
+            line-height: 20px;
+        }
+    }
+    .meet-the-dr-right {
+        width: 32vw;
+        height: auto;
+        margin-left: 55px;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 1025px) {
+    .about-sw-chiro {
+        display: block;
+        margin: 0 auto;
         .about-left {
-            height: auto;
-            width: 30vw;
-            img {
-                width: 100%;
-            }
+            width: 90vw;
+            margin: 0 auto;
         }
         .about-right {
-            width: 32vw;
-            font-family: $defaultFont;
-            margin-left: 55px;
-            h4 {
-                font-size: 25px;
-            }
-            p {
-                line-height: 20px;
-            }
+            width: 90vw;
+            margin-top: 15px;
+            margin: 15px auto;
         }
     }
-
     .meet-the-dr {
-        width: 100vw;
-        background-color: white;
-        border-bottom: 1px solid lightgray;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        padding: 25px 0;
-        .meet-the-dr-left {
-            width: 32vw;
-            font-family: $defaultFont;
-            margin-left: 55px;
-            h4 {
-                font-size: 25px;
-            }
-            p {
-                line-height: 20px;
-            }
+    width: 100vw;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+    display: block;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    margin: 0 auto;
+    .meet-the-dr-left {
+        width: 90vw;
+        font-family: $defaultFont;
+        margin-left: 0px;
+        margin: 0 auto;
+        h4 {
+            font-size: 25px;
         }
-        .meet-the-dr-right {
-            width: 32vw;
-            height: auto;
-            margin-left: 55px;
+        p {
+            line-height: 20px;
         }
     }
+    .meet-the-dr-right {
+        width: 90vw;
+        height: auto;
+        margin-left: 0px;
+        margin: 0 auto;
+        img {
+            width: 100%;
+            margin-top: 15px;
+        }
+    }
+}
+    
+}
 
-    @media (max-width: 950px) {
-        .about-sw-chiro {
-            display: block;
-            .about-left {
-                width: 90vw;
-                margin: 0 auto;
-            }
-            .about-right {
-                width: 90vw;
-                margin: 0 auto;
+@media (max-width: 500px) {
+    .home-jumbotron {
+        height: 500px;
+    }
+    .business-container {
+        width: 275px;
+        .business-southwest {
+            font-size: 40px;
+        }
+        .business-chiropractic {
+            font-size: 30px;
+        }
+        div {
+            ul {
+                li {
+                    .business-phone-button {
+                        background-color: white;
+                        margin-right: 0px;
+                        margin-bottom: 10px;
+                        border-radius: 5px;
+                        height: 40px;
+                        width: 200px;
+                        font-family: $defaultFont;
+                        border: 1px solid white;
+                    }
+                }
             }
         }
-        .meet-the-dr {
-            display: block;
-            .meet-the-dr-left {
-                width: 90vw;
-                margin: 0 auto;
-            }
-            .meet-the-dr-right {
-                width: 90vw;
-                display: flex;
+
+    }
+    .business-container {
+        div {
+            ul {
                 justify-content: center;
             }
         }
     }
-
-    @media (max-width: 500px) {
-        .home-jumbotron {
-            height: 500px;
-        }
-        .business-container {
-            width: 275px;
-            .business-southwest {
-                font-size: 40px;
-            }
-            .business-chiropractic {
-                font-size: 30px;
-            }
-        }
-        .business-container {
-            div {
-                ul {
-                    justify-content: center;
-                }
-            }
-        }
-        .business-phone-button {
-            background-color: white;
-            margin-right: 0px;
-            border-radius: 5px;
-            height: 40px;
-            width: 200px;
-            font-family: $defaultFont;
-            border: 1px solid white;
-        }
-    }
+}

@@ -7,13 +7,13 @@ $defaultGrey: #696D70;
 }
 
 .jumbotron-services {
-    height: 380px;
+    height: 400px;
     width: 100%;
     background: url("../app/assets/slc-valley.jpg") 50% / cover no-repeat;
 }
 
 .jumbotron-services-cover {
-    height: 380px;
+    height: 400px;
     width: 100%;
     background-color: rgba(0, 0, 0, .50);
     color: white;
@@ -23,11 +23,15 @@ $defaultGrey: #696D70;
 
 .jumbotron-services-content {
     width: 60vw;
+    height: 100%;
     margin: 0 auto;
-    padding-top: 100px;
-    line-height: 20px;
+    line-height: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     h1 {
         font-size: 35px;
+        line-height: 40px;
     }
     li {
         display: inline-block;
@@ -74,7 +78,6 @@ $defaultGrey: #696D70;
     display: flex;
     justify-content: center;
     margin-top: 20px;
-    
     button {
         width: 200px;
         height: 40px;
@@ -82,5 +85,116 @@ $defaultGrey: #696D70;
         border: 1px solid #6488ca;
         background-color: #6488ca;
         color: white;
+    }
+}
+
+@media (max-width: 1000px) {
+    .jumbotron-services-content {
+        width: 60vw;
+        margin: 0 auto;
+        line-height: 25px;
+        display: flex;
+        flex-direction: column;
+        h1 {
+            font-size: 35px;
+            line-height: 40px;
+        }
+        li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    .jumbotron-services-content {
+        width: 80vw;
+        margin: 0 auto;
+        line-height: 25px;
+        display: flex;
+        flex-direction: column;
+        h1 {
+            font-size: 35px;
+            line-height: 40px;
+        }
+        li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+    }
+    .services-content-container {
+        width: 80vw;
+        margin: 0 auto;
+        background-color: white;
+        padding: 40px 0;
+        font-family: $defaultFont;
+        h1 {
+            font-size: 45px;
+            line-height: 65px;
+        }
+        h3 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        p {
+            line-height: 25px;
+        }
+    }
+}
+
+@media (max-width: 683px) {
+    .jumbotron-services-content {
+        width: 80vw;
+        margin: 0 auto;
+        line-height: 25px;
+        display: flex;
+        flex-direction: column;
+        h1 {
+            font-size: 35px;
+            line-height: 40px;
+        }
+        li {
+            display: inline-block;
+            margin-right: 15px;
+        }
+        div {}
+    }
+}
+
+@media (max-width: 512px) {
+    .services-phone-button {
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: white;
+        border: 1px solid white;
+        margin-bottom: 15px;
+    }
+    .jumbotron-services-content {
+        div {
+            ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+    .services-content-container {
+        width: 90vw;
+        margin: 0 auto;
+        background-color: white;
+        padding: 40px 0;
+        font-family: $defaultFont;
+        h1 {
+            font-size: 45px;
+            line-height: 65px;
+        }
+        h3 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        p {
+            line-height: 25px;
+        }
     }
 }
