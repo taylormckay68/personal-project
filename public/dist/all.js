@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider, stripeProvider, $uiViewScrollProvider) {
+angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'ui.bootstrap', 'ui.grid.exporter', 'ngAnimate', 'ngTouch']).config(function ($stateProvider, $urlRouterProvider, stripeProvider, $uiViewScrollProvider) {
 
     $uiViewScrollProvider.useAnchorScroll();
 
@@ -14,7 +14,8 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'u
         controller: 'mainCtrl'
     }).state('congrats', {
         url: '/congrats',
-        templateUrl: './app/views/congrats.html'
+        templateUrl: './app/views/congrats.html',
+        controller: 'mainCtrl'
     }).state('payments', {
         url: '/payments',
         templateUrl: './app/views/payments.html',
@@ -79,39 +80,179 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'u
 });
 'use strict';
 
+angular.module('personal-project').controller('congratsCtrl', function ($scope, stripe, $http, $state, mailService, adminService, $modal, $log) {
+  $scope.test = 'working';
+
+  $scope.showForm = function () {
+    $scope.message = "Show Form Button Clicked";
+    console.log($scope.message);
+
+    var modalInstance = $modal.open({
+      templateUrl: '../app/views/appointment-request.html',
+      controller: ModalInstanceCtrlThree,
+      scope: $scope,
+      resolve: {
+        userForm: function userForm() {
+          return $scope.userForm;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      console.log('selected item', selectedItem);
+
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+  var ModalInstanceCtrl = function ModalInstanceCtrl($modalInstance, userForm) {
+    $scope.form = {};
+    $scope.submitForm = function (info) {
+      if ($scope.form.userForm.$valid) {
+        mailService.checkWorking(info).then(function (response) {
+          $scope.info = {};
+        });
+        console.log('user form is in scope');
+        $modalInstance.close('closed');
+      } else {
+        console.log('userform is not in scope');
+      }
+    };
+
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+  };
+});
+'use strict';
+
 angular.module('personal-project').controller('gridCtrl', function ($scope, adminService, $state) {
 
-    // function getUser() {
-    //     userService.getUser().then(function (user) {
-    //         if (user) $scope.user = user.username;
-    //         else $scope.user = 'NOT LOGGED IN';
-    //     })
-    // }
-
-    // getUser();
-
-    // $scope.loginLocal = function (username, password) {
-    //     console.log('Logging in with', username, password);
-    //     userService.loginLocal({
-    //             username: username,
-    //             password: password
-    //         })
-    //         .then(function (res) {
-    //             getUser();
-    //         })
-    // }
-
-    // $scope.logout = userService.logout;
-
-
     $scope.gridOptionsPatients = {
-        enableFiltering: true
+        enableFiltering: true,
+        enableGridMenu: true,
+        exporterCsvFilename: 'myFile.csv',
+        exporterPdfDefaultStyle: {
+            fontSize: 9
+        },
+        exporterPdfTableStyle: {
+            margin: [30, 30, 30, 30]
+        },
+        exporterPdfTableHeaderStyle: {
+            fontSize: 10,
+            bold: true,
+            italics: true,
+            color: 'red'
+        },
+        exporterPdfHeader: {
+            text: "Report",
+            style: 'headerStyle'
+        },
+        exporterPdfFooter: function exporterPdfFooter(currentPage, pageCount) {
+            return {
+                text: currentPage.toString() + ' of ' + pageCount.toString(),
+                style: 'footerStyle'
+            };
+        },
+        exporterPdfCustomFormatter: function exporterPdfCustomFormatter(docDefinition) {
+            docDefinition.styles.headerStyle = {
+                fontSize: 22,
+                bold: true
+            };
+            docDefinition.styles.footerStyle = {
+                fontSize: 10,
+                bold: true
+            };
+            return docDefinition;
+        },
+        exporterPdfOrientation: 'landscape',
+        exporterPdfPageSize: 'LETTER',
+        exporterPdfMaxGridWidth: 500
     };
+
     $scope.gridOptionsPayments = {
-        enableFiltering: true
+        enableFiltering: true,
+        enableGridMenu: true,
+        exporterCsvFilename: 'myFile.csv',
+        exporterPdfDefaultStyle: {
+            fontSize: 9
+        },
+        exporterPdfTableStyle: {
+            margin: [30, 30, 30, 30]
+        },
+        exporterPdfTableHeaderStyle: {
+            fontSize: 10,
+            bold: true,
+            italics: true,
+            color: 'red'
+        },
+        exporterPdfHeader: {
+            text: "Report",
+            style: 'headerStyle'
+        },
+        exporterPdfFooter: function exporterPdfFooter(currentPage, pageCount) {
+            return {
+                text: currentPage.toString() + ' of ' + pageCount.toString(),
+                style: 'footerStyle'
+            };
+        },
+        exporterPdfCustomFormatter: function exporterPdfCustomFormatter(docDefinition) {
+            docDefinition.styles.headerStyle = {
+                fontSize: 22,
+                bold: true
+            };
+            docDefinition.styles.footerStyle = {
+                fontSize: 10,
+                bold: true
+            };
+            return docDefinition;
+        },
+        exporterPdfOrientation: 'landscape',
+        exporterPdfPageSize: 'LETTER',
+        exporterPdfMaxGridWidth: 500
     };
+
     $scope.gridOptionsTotals = {
-        enableFiltering: true
+        enableFiltering: true,
+        enableGridMenu: true,
+        exporterCsvFilename: 'myFile.csv',
+        exporterPdfDefaultStyle: {
+            fontSize: 9
+        },
+        exporterPdfTableStyle: {
+            margin: [30, 30, 30, 30]
+        },
+        exporterPdfTableHeaderStyle: {
+            fontSize: 10,
+            bold: true,
+            italics: true,
+            color: 'red'
+        },
+        exporterPdfHeader: {
+            text: "Report",
+            style: 'headerStyle'
+        },
+        exporterPdfFooter: function exporterPdfFooter(currentPage, pageCount) {
+            return {
+                text: currentPage.toString() + ' of ' + pageCount.toString(),
+                style: 'footerStyle'
+            };
+        },
+        exporterPdfCustomFormatter: function exporterPdfCustomFormatter(docDefinition) {
+            docDefinition.styles.headerStyle = {
+                fontSize: 22,
+                bold: true
+            };
+            docDefinition.styles.footerStyle = {
+                fontSize: 10,
+                bold: true
+            };
+            return docDefinition;
+        },
+        exporterPdfOrientation: 'landscape',
+        exporterPdfPageSize: 'LETTER',
+        exporterPdfMaxGridWidth: 500
     };
 
     $scope.receivePatients = function () {
@@ -149,11 +290,6 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
 
   $scope.hours = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM"];
 
-  // $scope.submitForm = function (info) {
-  //   apptService.checkWorking(info).then(response => {
-  //     !response ? alert('not working') : $state.go('home');
-  //   })
-  // }
   $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   $scope.openHours = ['8:30 am - 6:00 pm', '8:30 am - 12:00 pm', '8:30 am - 6:00 pm', '8:30 am - 6:00 pm', '8:30 am - 12:00 pm', 'Closed', 'Closed'];
 
@@ -208,7 +344,7 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
       });
     }).then(function (payment) {
       console.log('successfully submitted payment for $', payment);
-      $scope.showSuccessfulPayment();
+      $scope.showCongrats();
     }).catch(function (err) {
       if (err.type && /^Stripe/.test(err.type)) {
         console.log('Stripe error: ', err.message);
@@ -278,6 +414,25 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     mailService.submitMessage(contactMessage).then(function (response) {
       $scope.contactMessage = {};
     });
+  };
+
+  $scope.showCongrats = function () {
+    var modalInstance = $modal.open({
+      templateUrl: '../app/views/congrats.html',
+      controller: ModalInstanceCtrlThree,
+      scope: $scope,
+      resolve: {
+        userForm: function userForm() {
+          return $scope.userForm;
+        }
+      }
+    });
+  };
+  var ModalInstanceCtrlThree = function ModalInstanceCtrlThree($modalInstance) {
+    $scope.close = function () {
+      $modalInstance.close('close');
+      $state.go('home');
+    };
   };
 });
 'use strict';

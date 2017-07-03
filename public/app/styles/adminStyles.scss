@@ -1,7 +1,11 @@
-
+$defaultFont: Tahoma,
+Geneva,
+sans-serif;
+$defaultGrey: #696D70;
 
 .admin-container {
     margin-top: 79px;
+    font-family: $defaultFont;
     div {
         a {
             display: flex;
@@ -22,6 +26,6 @@
     }
 }
 .myGrid {
-    width: 1200px;
+    width: 70vw;
     height: 250px;
 }

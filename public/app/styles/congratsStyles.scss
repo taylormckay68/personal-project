@@ -1,3 +1,14 @@
+$defaultFont: Tahoma,
+Geneva,
+sans-serif;
+$defaultGrey: #696D70;
+
 .congrats-container {
+    font-family: $defaultFont;
     margin-top: 79px;
+    section {
+        h1 {
+            font-size: 20px;
+        }
+    }
 }

@@ -1,15 +1,9 @@
 angular.module('personal-project').controller('mainCtrl', function ($scope, stripe, $http, $state, mailService, adminService, $modal, $log) {
 
-
   $scope.payment = {};
 
   $scope.hours = ["9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM"]
 
-  // $scope.submitForm = function (info) {
-  //   apptService.checkWorking(info).then(response => {
-  //     !response ? alert('not working') : $state.go('home');
-  //   })
-  // }
   $scope.days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   $scope.openHours = ['8:30 am - 6:00 pm', '8:30 am - 12:00 pm', '8:30 am - 6:00 pm', '8:30 am - 6:00 pm', '8:30 am - 12:00 pm', 'Closed', 'Closed'];
 
@@ -33,7 +27,7 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     });
   }
   $scope.goToHome = function() {
-    $state.go('home')
+    $state.go('home');
   }
 
   $scope.charge = function () {
@@ -69,7 +63,7 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
       })
       .then(function (payment) {
         console.log('successfully submitted payment for $', payment);
-        $scope.showSuccessfulPayment();
+        $scope.showCongrats();
       })
       .catch(function (err) {
         if (err.type && /^Stripe/.test(err.type)) {
@@ -143,4 +137,22 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
     })
   }
 
+  $scope.showCongrats = function () {
+    var modalInstance = $modal.open({
+      templateUrl: '../app/views/congrats.html',
+      controller: ModalInstanceCtrlThree,
+      scope: $scope,
+      resolve: {
+        userForm: function () {
+          return $scope.userForm;
+        }
+      }
+    });
+  };
+  var ModalInstanceCtrlThree = function ($modalInstance) {
+    $scope.close = function () {
+      $modalInstance.close('close');
+      $state.go('home');
+    };
+  }
 })

@@ -1,4 +1,4 @@
-angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'ui.bootstrap'])
+angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'ui.bootstrap', 'ui.grid.exporter', 'ngAnimate', 'ngTouch'])
 .config(function($stateProvider, $urlRouterProvider, stripeProvider, $uiViewScrollProvider) {
 
     $uiViewScrollProvider.useAnchorScroll()
@@ -16,6 +16,7 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'u
         .state('congrats', {
             url: '/congrats',
             templateUrl: './app/views/congrats.html',
+            controller: 'mainCtrl'
         })
         .state('payments', {
             url: '/payments',

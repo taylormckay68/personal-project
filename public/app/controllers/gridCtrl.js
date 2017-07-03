@@ -1,38 +1,129 @@
 angular.module('personal-project').controller('gridCtrl', function ($scope, adminService, $state) {
 
-    // function getUser() {
-    //     userService.getUser().then(function (user) {
-    //         if (user) $scope.user = user.username;
-    //         else $scope.user = 'NOT LOGGED IN';
-    //     })
-    // }
-
-    // getUser();
-
-    // $scope.loginLocal = function (username, password) {
-    //     console.log('Logging in with', username, password);
-    //     userService.loginLocal({
-    //             username: username,
-    //             password: password
-    //         })
-    //         .then(function (res) {
-    //             getUser();
-    //         })
-    // }
-
-    // $scope.logout = userService.logout;
-
-
-
-
     $scope.gridOptionsPatients = {
         enableFiltering: true,
+        enableGridMenu: true,
+        exporterCsvFilename: 'myFile.csv',
+        exporterPdfDefaultStyle: {
+            fontSize: 9
+        },
+        exporterPdfTableStyle: {
+            margin: [30, 30, 30, 30]
+        },
+        exporterPdfTableHeaderStyle: {
+            fontSize: 10,
+            bold: true,
+            italics: true,
+            color: 'red'
+        },
+        exporterPdfHeader: {
+            text: "Report",
+            style: 'headerStyle'
+        },
+        exporterPdfFooter: function (currentPage, pageCount) {
+            return {
+                text: currentPage.toString() + ' of ' + pageCount.toString(),
+                style: 'footerStyle'
+            };
+        },
+        exporterPdfCustomFormatter: function (docDefinition) {
+            docDefinition.styles.headerStyle = {
+                fontSize: 22,
+                bold: true
+            };
+            docDefinition.styles.footerStyle = {
+                fontSize: 10,
+                bold: true
+            };
+            return docDefinition;
+        },
+        exporterPdfOrientation: 'landscape',
+        exporterPdfPageSize: 'LETTER',
+        exporterPdfMaxGridWidth: 500,
     }
+
     $scope.gridOptionsPayments = {
         enableFiltering: true,
+        enableGridMenu: true,
+        exporterCsvFilename: 'myFile.csv',
+        exporterPdfDefaultStyle: {
+            fontSize: 9
+        },
+        exporterPdfTableStyle: {
+            margin: [30, 30, 30, 30]
+        },
+        exporterPdfTableHeaderStyle: {
+            fontSize: 10,
+            bold: true,
+            italics: true,
+            color: 'red'
+        },
+        exporterPdfHeader: {
+            text: "Report",
+            style: 'headerStyle'
+        },
+        exporterPdfFooter: function (currentPage, pageCount) {
+            return {
+                text: currentPage.toString() + ' of ' + pageCount.toString(),
+                style: 'footerStyle'
+            };
+        },
+        exporterPdfCustomFormatter: function (docDefinition) {
+            docDefinition.styles.headerStyle = {
+                fontSize: 22,
+                bold: true
+            };
+            docDefinition.styles.footerStyle = {
+                fontSize: 10,
+                bold: true
+            };
+            return docDefinition;
+        },
+        exporterPdfOrientation: 'landscape',
+        exporterPdfPageSize: 'LETTER',
+        exporterPdfMaxGridWidth: 500,
     }
+
     $scope.gridOptionsTotals = {
         enableFiltering: true,
+        enableGridMenu: true,
+        exporterCsvFilename: 'myFile.csv',
+        exporterPdfDefaultStyle: {
+            fontSize: 9
+        },
+        exporterPdfTableStyle: {
+            margin: [30, 30, 30, 30]
+        },
+        exporterPdfTableHeaderStyle: {
+            fontSize: 10,
+            bold: true,
+            italics: true,
+            color: 'red'
+        },
+        exporterPdfHeader: {
+            text: "Report",
+            style: 'headerStyle'
+        },
+        exporterPdfFooter: function (currentPage, pageCount) {
+            return {
+                text: currentPage.toString() + ' of ' + pageCount.toString(),
+                style: 'footerStyle'
+            };
+        },
+        exporterPdfCustomFormatter: function (docDefinition) {
+            docDefinition.styles.headerStyle = {
+                fontSize: 22,
+                bold: true
+            };
+            docDefinition.styles.footerStyle = {
+                fontSize: 10,
+                bold: true
+            };
+            return docDefinition;
+        },
+        exporterPdfOrientation: 'landscape',
+        exporterPdfPageSize: 'LETTER',
+        exporterPdfMaxGridWidth: 500,
     }
 
     $scope.receivePatients = () => {
