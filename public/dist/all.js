@@ -80,6 +80,93 @@ angular.module('personal-project', ['ui.router', 'angular-stripe', 'ui.grid', 'u
 });
 'use strict';
 
+angular.module('personal-project').service('adminService', function ($http) {
+
+    this.getPatients = function () {
+        return $http({
+            url: '/api/getPatients',
+            method: 'GET'
+        });
+    };
+    this.getPayments = function () {
+        return $http({
+            url: '/api/getPayments',
+            method: 'GET'
+        });
+    };
+    this.getTotal = function () {
+        return $http({
+            url: '/api/getTotal',
+            method: 'GET'
+        });
+    };
+    this.addPatient = function (patient) {
+        return $http({
+            url: '/api/addPatient',
+            method: 'POST',
+            data: patient
+        });
+    };
+    // this.addPayment = () => {
+    //     return $http({
+    //         url: '/api/addPayment',
+    //         method: 'POST',
+    //         data: {
+    //             firstname: $scope.firstname,
+    //             lastname: $scope.lastname,
+    //             patientid: $scope.patientid,
+    //             payment: $scope.mockPrice
+    //         }
+    //     })
+    // }
+});
+'use strict';
+
+angular.module('personal-project').service('mailService', function ($http) {
+
+    this.checkWorking = function (info) {
+        return $http({
+            url: '/api/sendrequest',
+            method: 'POST',
+            data: info
+        });
+    };
+    this.submitMessage = function (contactMessage) {
+        return $http({
+            url: '/api/sendMessage',
+            method: 'POST',
+            data: contactMessage
+        });
+    };
+});
+'use strict';
+
+angular.module('personal-project').service('userService', function ($http) {
+
+  this.getUser = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/me'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+
+  this.logout = function () {
+    return $http({
+      method: 'GET',
+      url: '/auth/logout'
+    }).then(function (res) {
+      return res.data;
+    }).catch(function (err) {
+      console.log(err);
+    });
+  };
+});
+'use strict';
+
 angular.module('personal-project').controller('congratsCtrl', function ($scope, stripe, $http, $state, mailService, adminService, $modal, $log) {
   $scope.test = 'working';
 
@@ -433,92 +520,5 @@ angular.module('personal-project').controller('mainCtrl', function ($scope, stri
       $modalInstance.close('close');
       $state.go('home');
     };
-  };
-});
-'use strict';
-
-angular.module('personal-project').service('adminService', function ($http) {
-
-    this.getPatients = function () {
-        return $http({
-            url: '/api/getPatients',
-            method: 'GET'
-        });
-    };
-    this.getPayments = function () {
-        return $http({
-            url: '/api/getPayments',
-            method: 'GET'
-        });
-    };
-    this.getTotal = function () {
-        return $http({
-            url: '/api/getTotal',
-            method: 'GET'
-        });
-    };
-    this.addPatient = function (patient) {
-        return $http({
-            url: '/api/addPatient',
-            method: 'POST',
-            data: patient
-        });
-    };
-    // this.addPayment = () => {
-    //     return $http({
-    //         url: '/api/addPayment',
-    //         method: 'POST',
-    //         data: {
-    //             firstname: $scope.firstname,
-    //             lastname: $scope.lastname,
-    //             patientid: $scope.patientid,
-    //             payment: $scope.mockPrice
-    //         }
-    //     })
-    // }
-});
-'use strict';
-
-angular.module('personal-project').service('mailService', function ($http) {
-
-    this.checkWorking = function (info) {
-        return $http({
-            url: '/api/sendrequest',
-            method: 'POST',
-            data: info
-        });
-    };
-    this.submitMessage = function (contactMessage) {
-        return $http({
-            url: '/api/sendMessage',
-            method: 'POST',
-            data: contactMessage
-        });
-    };
-});
-'use strict';
-
-angular.module('personal-project').service('userService', function ($http) {
-
-  this.getUser = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/me'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
-  };
-
-  this.logout = function () {
-    return $http({
-      method: 'GET',
-      url: '/auth/logout'
-    }).then(function (res) {
-      return res.data;
-    }).catch(function (err) {
-      console.log(err);
-    });
   };
 });

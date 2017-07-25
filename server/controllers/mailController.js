@@ -1,3 +1,4 @@
+require('dotenv').config();
 const nodemailer = require('nodemailer');
 const moment = require('moment');
 const config = require('../config');
@@ -15,15 +16,15 @@ module.exports = {
             service: 'gmail',
             secure: true,
             auth: {
-                user: config.emailuser,
-                pass: config.emailpass
+                user: process.env.emailuser,
+                pass: process.env.emailpass
             }
         });
 
         // setup email data with unicode symbols
         let mailOptions = {
-            from: `"Appointment Request" <${config.fromemail}>`, // sender address
-            to: config.toemail, // list of receivers
+            from: `"Appointment Request" <${process.env.fromemail}>`, // sender address
+            to: process.env.toemail, // list of receivers
             subject: 'Requested Appointment', // Subject line
             text: message, // plain text body
             // html: `<b>${ req.body.body }</b>` // html body
@@ -48,15 +49,15 @@ module.exports = {
             service: 'gmail',
             secure: true,
             auth: {
-                user: config.emailuser,
-                pass: config.emailpass
+                user: process.env.emailuser,
+                pass: process.env.emailpass
             }
         });
 
         // setup email data with unicode symbols
         let mailOptions = {
             from: `${name} <${email}>`, // sender address
-            to: config.toemail, // list of receivers
+            to: process.env.toemail, // list of receivers
             subject: 'Contact us', // Subject line
             text: comments, // plain text body
             // html: `<b>${ req.body.body }</b>` // html body

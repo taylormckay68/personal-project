@@ -1,8 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const nodemailer = require('nodemailer');
-const stripe = require('stripe')(config.secretKey);
+const stripe = require('stripe')(process.env.secretKey);
 const session = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0')
@@ -17,22 +18,22 @@ app.use(bodyParser.json());
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: config.sessionSecret
+    secret: process.env.sessionSecret
 }))
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(__dirname + './../public'));
 
-massive(config.connectionString).then(function (db) {
+massive(process.env.connectionString).then(function (db) {
     app.set('db', db);
     console.log('DB set');
 });
 
 passport.use(new Auth0Strategy({
-        domain: config.auth0.domain,
-        clientID: config.auth0.clientID,
-        clientSecret: config.auth0.clientSecret,
+        domain: process.env.auth0domain,
+        clientID: process.env.auth0clientID,
+        clientSecret: process.env.auth0clientSecret,
         callbackURL: '/auth/callback'
     },
     function (accessToken, refreshToken, extraParams, profile, done) {
@@ -43,12 +44,12 @@ passport.use(new Auth0Strategy({
 
         db.getUserByAuthId([profile.id]).then((response) => {
             user = response[0];
-            if (!user && profile.id === config.auth0.authorized1) {
+            if (!user && profile.id === process.env.auth0authorized1) {
                 console.log('CREATING USER');
                 db.createUserByAuth([profile.displayName, profile.id]).then((user) => {
                     return done(null, user)
                 })
-            } else if(user && profile.id === config.auth0.authorized1){
+            } else if(user && profile.id === process.env.auth0.authorized1){
                 console.log('FOUND USER', user);
                 return done(null, user);
             } else {
@@ -179,6 +180,6 @@ app.post('/api/payment', (req, res, next) => {
 
 // })
 
-app.listen(3000, () => {
-    console.log('Listening on port 3000');
+app.listen(process.env.PORT || 3000, () => {
+    console.log('Listening');
 });
