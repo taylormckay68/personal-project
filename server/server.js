@@ -49,7 +49,7 @@ passport.use(new Auth0Strategy({
                 db.createUserByAuth([profile.displayName, profile.id]).then((user) => {
                     return done(null, user)
                 })
-            } else if(user && profile.id === process.env.auth0.authorized1){
+            } else if(user && profile.id === process.env.auth0authorized1){
                 console.log('FOUND USER', user);
                 return done(null, user);
             } else {
