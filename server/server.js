@@ -1,7 +1,6 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const config = require('./config');
 const nodemailer = require('nodemailer');
 const stripe = require('stripe')(process.env.secretKey);
 const session = require('express-session');

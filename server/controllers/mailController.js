@@ -1,7 +1,6 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
 const moment = require('moment');
-const config = require('../config');
 
 
 
