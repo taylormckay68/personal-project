@@ -325,7 +325,8 @@
   -ms-flex-pack: center;
   justify-content: center;
   -ms-flex-wrap: wrap;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  max-width: 920px; }
 
 .home-services-img:nth-child(1) {
   width: 230px;
