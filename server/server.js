@@ -151,34 +151,6 @@ app.post('/api/payment', (req, res, next) => {
     });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// app.post('/api/test', (req, res, next) => {
-//     const { first, last, phone, email, date, time } = req.body;
-//     emailContent = {
-//         first,
-//         last,
-//         phone,
-//         email,
-//         date: moment(req.body.date).format('LL'),
-//         time
-//     };
-//     console.log(req.body);
-
-// })
-
-app.listen(process.env.PORT || 3000, () => {
-    console.log('Listening');
+app.listen(process.env.PORT || 3001, () => {
+    console.log(`Listening of port ${process.env.PORT || 3001}`);
 });
